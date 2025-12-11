@@ -2,36 +2,27 @@ async function loadData() {
   const output = document.getElementById("output");
   output.textContent = "Caricamento...";
 
-  const url = "https://www.audiopluginguy.com/deals/";
+  const apiUrl = "https://cdn.audiopluginguy.com/apg-deals/api/apg-deals.json";
+
   try {
-    // Primo tentativo: diretto
-    const res = await fetch(url);
+    let res = await fetch(apiUrl);
+    if (!res.ok) throw new Error("Errore HTTP " + res.status);
 
-    if (!res.ok) throw new Error("Errore HTTP: " + res.status);
+    let deals = await res.json();
 
-    const data = await res.json();
-    output.textContent = JSON.stringify(data, null, 2);
-    return;
+    // Mostra tutto in modo leggibile
+    output.textContent = JSON.stringify(deals, null, 2);
 
   } catch (err) {
-    console.warn("Fetch diretto fallito, riprovo con corsproxy.io...", err);
+    console.warn("Errore diretto, provo con corsproxy.io", err);
+
+    try {
+      const proxy = "https://corsproxy.io/?" + encodeURIComponent(apiUrl);
+      const res2 = await fetch(proxy);
+      const deals2 = await res2.json();
+      output.textContent = JSON.stringify(deals2, null, 2);
+    } catch (err2) {
+      output.textContent = "Errore anche col proxy: " + err2;
+    }
   }
-
-  // Secondo tentativo: corsproxy.io
-  try {
-    const proxyUrl = "https://corsproxy.io/?" + encodeURIComponent(url);
-    const res2 = await fetch(proxyUrl);
-
-    if (!res2.ok) throw new Error("Errore proxy: " + res2.status);
-
-    const data2 = await res2.json();
-    output.textContent = JSON.stringify(data2, null, 2);
-
-  } catch (err2) {
-    output.textContent = "Errore anche col proxy: " + err2;
-  }
-}
-
-if ("serviceWorker" in navigator) {
-  navigator.serviceWorker.register("service-worker.js");
 }
