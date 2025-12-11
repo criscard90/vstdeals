@@ -1,0 +1,15 @@
+{
+  "name": "La Mia PWA",
+  "short_name": "PWA",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0080ff",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }
+  ]
+}
