@@ -129,7 +129,7 @@
 <div id="deals-container"></div>
 
 <script>
-    const WORKER_URL = 'https://TUO-WORKER.workers.dev/'; // <--- INSERISCI IL TUO URL QUI
+    const WORKER_URL = 'https://vstdeals.ccmixmastering.workers.dev/'; // <--- INSERISCI IL TUO URL QUI
 
     async function fetchDeals() {
         try {
@@ -147,19 +147,21 @@
         const container = document.getElementById('deals-container');
         container.innerHTML = '';
 
-        deals.forEach(deal => {
-            const card = document.createElement('div');
-            card.className = 'deal-card';
-            card.innerHTML = `
-                <div class="developer">${deal.developer || 'Unknown'}</div>
-                <div class="plugin-name">${deal.plugin || 'No Name'}</div>
-                <div class="deal-info">
-                    <span class="price">${deal.price || deal.deal || 'Sale'}</span>
-                    <a href="${deal.link}" target="_blank" class="btn-get">VAI <i class="fas fa-external-link-alt"></i></a>
-                </div>
-            `;
-            container.appendChild(card);
-        });
+// Nel tuo index.html, cambia il ciclo forEach così:
+deals.forEach(deal => {
+    const card = document.createElement('div');
+    card.className = 'deal-card';
+    card.innerHTML = `
+        <div class="developer">OFFERTA 100%</div>
+        <div class="plugin-name">${deal.description}</div>
+        <div class="deal-info">
+            <span class="price">GRATIS</span>
+            <span style="font-size: 0.8rem; color: var(--text-dim)">Scade: ${deal.ends}</span>
+            <a href="${deal.link}" target="_blank" class="btn-get">PRENDI</a>
+        </div>
+    `;
+    container.appendChild(card);
+});
     }
 
     // Filtro ricerca semplice
