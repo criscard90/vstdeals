@@ -133,36 +133,35 @@
 async function fetchDeals() {
     const loader = document.getElementById('loader');
     const container = document.getElementById('deals-container');
+    
+    // Il tuo Worker Cloudflare
+    const MY_PROXY = 'https://vstdeals.ccmixmastering.workers.dev/?url=';
+    // L'URL del feed PolitePol
     const FEED_URL = 'https://politepol.com/fd/n16wyFGjEXT1.json';
 
     try {
-        const response = await fetch(FEED_URL);
+        // Concateniamo Proxy + URL del Feed
+        const response = await fetch(MY_PROXY + encodeURIComponent(FEED_URL));
         const data = await response.json();
         const items = data.items || [];
 
-        // FILTRO: Solo dove content_html contiene esattamente 100%
+        // Filtro per i deal al 100%
         const deals = items.filter(item => {
             return item.content_html && item.content_html.includes("100%");
         });
 
         if (deals.length === 0) {
-            loader.innerHTML = `
-                <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 10px;"></i>
-                <p>Nessun regalo al 100% oggi.<br>Riprova più tardi!</p>
-            `;
+            loader.innerHTML = "<p>Nessun regalo al 100% trovato oggi.</p>";
             return;
         }
 
         container.innerHTML = '';
         deals.forEach(item => {
-            // Puliamo un po' il titolo se contiene "is offering 100% off"
-            const cleanTitle = item.title.replace(/is offering 100% off/gi, "FREE:");
-
             const card = document.createElement('div');
             card.className = 'deal-card';
             card.innerHTML = `
                 <div class="developer">PLUGIN GRATUITO</div>
-                <div class="plugin-name">${cleanTitle}</div>
+                <div class="plugin-name">${item.title}</div>
                 <div class="deal-info">
                     <span class="price">100% OFF</span>
                     <a href="${item.url}" target="_blank" class="btn-get">RISCATTA</a>
@@ -174,11 +173,10 @@ async function fetchDeals() {
         loader.style.display = 'none';
 
     } catch (error) {
-        loader.innerHTML = "<p>Errore di sincronizzazione dati.</p>";
-        console.error("Errore feed:", error);
+        loader.innerHTML = "<p>Errore CORS o di connessione.</p>";
+        console.error("Errore fetch:", error);
     }
 }
-
     fetchDeals();
 </script>
 
