@@ -1,0 +1,15 @@
+{
+  "name": "Plugin Deals Live",
+  "short_name": "Deals",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#38bdf8",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3659/3659744.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
