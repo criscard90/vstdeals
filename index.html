@@ -3,390 +3,228 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Audio Plugin Deals</title>
-<link rel="manifest" href="manifest.json">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<title>Plugin gratuiti da riscattare</title>
+
 <style>
 :root {
-    --bg: #0f172a;
-    --card: #1e293b;
-    --accent: #38bdf8;
-    --text: #f1f5f9;
-    --text-dim: #94a3b8;
-    --seen: #facc15;
-    --redeemed: #4ade80;
-    --ignored: #f87171;
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --blue: #38bdf8;
+  --green: #22c55e;
+  --yellow: #facc15;
+  --red: #f87171;
 }
 
+* { box-sizing: border-box; }
+
 body {
-    font-family: 'Segoe UI', system-ui, sans-serif;
-    background-color: var(--bg);
-    color: var(--text);
-    margin: 0;
-    padding: 20px;
+  margin: 0;
+  background: var(--bg);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text);
 }
 
 header {
-    text-align: center;
-    margin-bottom: 20px;
+  padding: 16px;
 }
 
-h1 {
-    font-size: 1.5rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 2px;
+input[type="search"] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: none;
+  background: var(--card);
+  color: var(--text);
+  font-size: 16px;
 }
 
-#loader {
-    text-align: center;
-    padding: 50px;
-    color: var(--accent);
+main {
+  padding: 16px;
+  display: grid;
+  gap: 16px;
 }
 
-#filters {
-    text-align: center;
-    margin-bottom: 15px;
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 20px rgba(0,0,0,.25);
 }
 
-#filters button {
-    margin: 0 5px 5px 0;
-    padding: 6px 12px;
-    border: none;
-    border-radius: 6px;
-    background: var(--card);
-    color: var(--text);
-    cursor: pointer;
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
 }
 
-#filters button.active {
-    background: var(--accent);
-    color: var(--bg);
+.badge.free { background: rgba(250,204,21,.15); color: var(--yellow); }
+.badge.redeemed { background: rgba(34,197,94,.15); color: var(--green); }
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 8px;
 }
 
-#reset-btn {
-    text-align: center;
-    margin-bottom: 15px;
+.date {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 12px;
 }
 
-#reset-btn button {
-    padding: 6px 12px;
-    border: none;
-    border-radius: 6px;
-    background: #ef4444;
-    color: white;
-    cursor: pointer;
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
 }
 
-#deals-container {
-    display: grid;
-    gap: 15px;
-    max-width: 600px;
-    margin: 0 auto;
+.btn {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
 }
 
-.deal-card {
-    background: var(--card);
-    border-radius: 12px;
-    padding: 16px;
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: transform 0.2s;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+.btn.blue {
+  background: var(--blue);
+  color: #022c22;
 }
 
-.deal-card:active {
-    transform: scale(0.98);
+.btn.red {
+  background: var(--red);
+  color: #450a0a;
 }
 
-.developer {
-    font-size: 0.75rem;
-    font-weight: bold;
-    text-transform: uppercase;
+/* Toggle switch */
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--muted);
 }
 
-.plugin-name {
-    font-size: 1.1rem;
-    font-weight: 600;
+.toggle input {
+  display: none;
 }
 
-.pub-date {
-    font-size: 0.75rem;
-    color: var(--text-dim);
+.slider {
+  width: 44px;
+  height: 24px;
+  background: #334155;
+  border-radius: 999px;
+  position: relative;
+  cursor: pointer;
+  transition: .2s;
 }
 
-.deal-info {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-top: 5px;
-    gap: 5px;
+.slider::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+  transition: .2s;
 }
 
-.price {
-    font-size: 1.2rem;
-    font-weight: bold;
+.toggle input:checked + .slider {
+  background: var(--green);
 }
 
-.btn-get {
-    background: var(--accent);
-    color: var(--bg);
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 0.9rem;
-    flex-shrink: 0;
-}
-
-.chk-container {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    margin-left: auto;
-}
-
-.chk-label {
-    font-size: 0.75rem;
-    color: var(--text-dim);
-}
-
-.btn-ignore {
-    background: var(--ignored);
-    color: var(--bg);
-    border: none;
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-size: 0.7rem;
-    cursor: pointer;
-}
-
-/* Stati */
-.card-seen .developer { color: var(--seen); }
-.card-redeemed .developer { color: var(--redeemed); }
-.card-seen.card-redeemed .developer { color: var(--redeemed); font-style: italic; }
-.card-ignored .developer { color: var(--ignored); font-style: italic; }
-.search-bar {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto 10px auto;
-    display: block;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    background: var(--card);
-    color: white;
-    box-sizing: border-box;
+.toggle input:checked + .slider::after {
+  transform: translateX(20px);
 }
 </style>
 </head>
+
 <body>
 
 <header>
-    <h1><i class="fas fa-wave-square"></i> Plugin Deals</h1>
+  <input type="search" placeholder="Cerca plugin…">
 </header>
 
-<input type="text" id="search" class="search-bar" placeholder="Cerca plugin o brand...">
-
-<div id="filters">
-    <button data-filter="all" class="active">Tutti</button>
-    <button data-filter="unredeemed">Non riscattati</button>
-    <button data-filter="seen">Visti</button>
-    <button data-filter="redeemed">Riscattati</button>
-    <button data-filter="ignored">Non mi interessa</button>
-</div>
-
-<div id="reset-btn">
-    <button id="reset-storage">Reset Visti/Riscattati/Non interessati</button>
-</div>
-
-<div id="loader">
-    <i class="fas fa-circle-notch fa-spin fa-2x"></i>
-    <p>Sintonizzando le offerte...</p>
-</div>
-
-<div id="deals-container"></div>
+<main id="list"></main>
 
 <script>
-const MY_PROXY = 'https://vstdeals.ccmixmastering.workers.dev/?url=';
-const FEED_URL = 'https://politepol.com/fd/ZevQ0jf8HzWL.json';
+// SIMULAZIONE DATI RSS
+const items = [
+  {
+    id: "screamo",
+    title: "Screamo by W.A. Production is available for free with the code: WRUBF25.",
+    link: "#",
+    date_published: "2025-12-16T09:30:00Z"
+  },
+  {
+    id: "mbitfunmb",
+    title: "MBitFunMB by MeldaProduction is available for free with the code: WRUBF25.",
+    link: "#",
+    date_published: "2025-12-15T14:10:00Z"
+  },
+  {
+    id: "selene",
+    title: "Auburn Sounds has released a free version of Selene reverb for Black Friday.",
+    link: "#",
+    date_published: "2025-12-14T18:45:00Z"
+  }
+];
 
-// --- LocalStorage helpers ---
-function getSeenDeals() { return JSON.parse(localStorage.getItem('seenDeals') || '[]'); }
-function markAsSeen(dealId) {
-    const seen = getSeenDeals();
-    if (!seen.includes(dealId)) { seen.push(dealId); localStorage.setItem('seenDeals', JSON.stringify(seen)); }
-}
+const list = document.getElementById("list");
 
-function getRedeemedDeals() { return JSON.parse(localStorage.getItem('redeemedDeals') || '[]'); }
-function toggleRedeemed(dealId) {
-    const redeemed = getRedeemedDeals();
-    if (redeemed.includes(dealId)) {
-        const index = redeemed.indexOf(dealId); redeemed.splice(index, 1);
-    } else { redeemed.push(dealId); }
-    localStorage.setItem('redeemedDeals', JSON.stringify(redeemed));
-}
+items.forEach(item => {
+  const redeemed = localStorage.getItem(item.id) === "true";
 
-function getIgnoredDeals() { return JSON.parse(localStorage.getItem('ignoredDeals') || '[]'); }
-function toggleIgnored(dealId) {
-    const ignored = getIgnoredDeals();
-    if(!ignored.includes(dealId)) ignored.push(dealId);
-    localStorage.setItem('ignoredDeals', JSON.stringify(ignored));
-}
+  const card = document.createElement("div");
+  card.className = "card";
 
-// --- Fetch deals ---
-async function fetchDeals() {
-    const loader = document.getElementById('loader');
-    const container = document.getElementById('deals-container');
+  card.innerHTML = `
+    <span class="badge ${redeemed ? "redeemed" : "free"}">
+      ${redeemed ? "RISCATTATO" : "PLUGIN GRATUITO"}
+    </span>
 
-    try {
-        const response = await fetch(MY_PROXY + encodeURIComponent(FEED_URL));
-        const data = await response.json();
-        const items = data.items || [];
+    <div class="title">${item.title}</div>
+    <div class="date">
+      Pubblicato il ${new Date(item.date_published).toLocaleDateString("it-IT")}
+    </div>
 
-        const deals = items.filter(item => {
-            const content = item.content_html || "";
-            return content.includes("100%");
-        });
+    <div class="actions">
+      <a href="${item.link}" target="_blank">
+        <button class="btn blue">RISCATTA</button>
+      </a>
 
-        if (deals.length === 0) { loader.innerHTML = "<p>Nessun regalo al 100% trovato oggi.</p>"; return; }
+      <div class="toggle">
+        <label>
+          <input type="checkbox" ${redeemed ? "checked" : ""}>
+          <span class="slider"></span>
+        </label>
+        <span>Riscattato</span>
+      </div>
+    </div>
+  `;
 
-        container.innerHTML = '';
-        const seenDeals = getSeenDeals();
-        const redeemedDeals = getRedeemedDeals();
-        const ignoredDeals = getIgnoredDeals();
+  const checkbox = card.querySelector("input");
+  const badge = card.querySelector(".badge");
 
-        deals.forEach(item => {
-            const dealId = item.url;
-            const isSeen = seenDeals.includes(dealId);
-            const isRedeemed = redeemedDeals.includes(dealId);
-            const isIgnored = ignoredDeals.includes(dealId);
-            const pubDate = item.pubDate ? new Date(item.pubDate).toLocaleDateString() : '';
+  checkbox.addEventListener("change", () => {
+    localStorage.setItem(item.id, checkbox.checked);
+    badge.textContent = checkbox.checked ? "RISCATTATO" : "PLUGIN GRATUITO";
+    badge.className = "badge " + (checkbox.checked ? "redeemed" : "free");
+  });
 
-            const card = document.createElement('div');
-            card.className = 'deal-card';
-            if (isSeen) card.classList.add('card-seen');
-            if (isRedeemed) card.classList.add('card-redeemed');
-            if (isIgnored) card.classList.add('card-ignored');
-            if (isIgnored) card.style.display = 'none';
-
-            card.innerHTML = `
-                <div class="developer">${isRedeemed ? 'RISCATTATO' : (isSeen ? 'VISTO' : (isIgnored ? 'NON INTERESSA' : 'PLUGIN GRATUITO'))}</div>
-                <div class="plugin-name">${item.title}</div>
-                ${pubDate ? `<div class="pub-date">Pubblicato: ${pubDate}</div>` : ''}
-                <div class="deal-info">
-                    <span class="price">100% OFF</span>
-                    <a href="${item.url}" target="_blank" class="btn-get">RISCATTA</a>
-                    <div class="chk-container">
-                        <input type="checkbox" class="chk-redeemed" ${isRedeemed ? 'checked' : ''}>
-                        <span class="chk-label">Segna come riscattato</span>
-                        <button class="btn-ignore">Non mi interessa</button>
-                    </div>
-                </div>
-            `;
-
-            container.appendChild(card);
-
-            // CLICK sul link → segna come visto
-            card.querySelector('.btn-get').addEventListener('click', () => {
-                markAsSeen(dealId);
-                card.classList.add('card-seen');
-                const devDiv = card.querySelector('.developer');
-                const nowRedeemed = getRedeemedDeals().includes(dealId);
-                devDiv.textContent = nowRedeemed ? 'RISCATTATO' : 'VISTO';
-            });
-
-            // CHECKBOX riscattato
-            const chk = card.querySelector('.chk-redeemed');
-            chk.addEventListener('change', () => {
-                toggleRedeemed(dealId);
-                card.classList.toggle('card-redeemed', chk.checked);
-
-                const devDiv = card.querySelector('.developer');
-                const nowSeen = getSeenDeals().includes(dealId);
-                const nowRedeemed = getRedeemedDeals().includes(dealId);
-                const nowIgnored = getIgnoredDeals().includes(dealId);
-
-                if(nowIgnored) devDiv.textContent = 'NON INTERESSA';
-                else if(nowRedeemed) devDiv.textContent = 'RISCATTATO';
-                else if(nowSeen) devDiv.textContent = 'VISTO';
-                else devDiv.textContent = 'PLUGIN GRATUITO';
-            });
-
-            // NON MI INTERESSA
-            const btnIgnore = card.querySelector('.btn-ignore');
-            btnIgnore.addEventListener('click', () => {
-                if(confirm('Vuoi rimuovere questo plugin dalla lista?')) {
-                    toggleIgnored(dealId);
-                    card.classList.add('card-ignored');
-                    card.style.display = 'none';
-                }
-            });
-        });
-
-        loader.style.display = 'none';
-    } catch (error) {
-        loader.innerHTML = "<p>Errore nel caricamento. Riprova.</p>";
-        console.error("Errore:", error);
-    }
-}
-
-// --- Ricerca ---
-document.getElementById('search').addEventListener('input', function(e) {
-    const searchTerm = e.target.value.toLowerCase();
-    const cards = document.querySelectorAll('.deal-card');
-    cards.forEach(card => {
-        const content = card.textContent.toLowerCase();
-        card.style.display = content.includes(searchTerm) ? "flex" : "none";
-    });
+  list.appendChild(card);
 });
-
-// --- Filtri ---
-const filterButtons = document.querySelectorAll('#filters button');
-filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        applyFilter(filter);
-    });
-});
-
-function applyFilter(filter) {
-    const cards = document.querySelectorAll('.deal-card');
-    const ignoredDeals = getIgnoredDeals();
-    cards.forEach(card => {
-        const isSeen = card.classList.contains('card-seen');
-        const isRedeemed = card.classList.contains('card-redeemed');
-        const dealId = card.querySelector('.btn-get').href;
-        const isIgnored = ignoredDeals.includes(dealId);
-        let show = true;
-
-        switch(filter) {
-            case 'unredeemed': show = !isRedeemed && !isIgnored; break;
-            case 'seen': show = isSeen && !isRedeemed && !isIgnored; break;
-            case 'redeemed': show = isRedeemed; break;
-            case 'ignored': show = isIgnored; break;
-            default: show = !isIgnored; // tutti tranne ignorati
-        }
-        card.style.display = show ? 'flex' : 'none';
-    });
-}
-
-// --- Reset localStorage ---
-document.getElementById('reset-storage').addEventListener('click', () => {
-    if(confirm('Sei sicuro di voler resettare tutti i visti, riscattati e non interessati?')) {
-        localStorage.removeItem('seenDeals');
-        localStorage.removeItem('redeemedDeals');
-        localStorage.removeItem('ignoredDeals');
-        fetchDeals();
-    }
-});
-
-// --- Avvio ---
-fetchDeals();
 </script>
+
 </body>
 </html>
