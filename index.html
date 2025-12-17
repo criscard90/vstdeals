@@ -129,25 +129,23 @@
 <div id="deals-container"></div>
 
 <script>
-    
+ const MY_PROXY = 'https://vstdeals.ccmixmastering.workers.dev/?url=';
+const FEED_URL = 'https://politepol.com/fd/ZevQ0jf8HzWL.json';
+
+// 1. Funzione principale per caricare i dati
 async function fetchDeals() {
     const loader = document.getElementById('loader');
     const container = document.getElementById('deals-container');
-    
-    // Il tuo Worker Cloudflare
-    const MY_PROXY = 'https://vstdeals.ccmixmastering.workers.dev/?url=';
-    // L'URL del feed PolitePol
-    const FEED_URL = 'https://politepol.com/fd/ZevQ0jf8HzWL.json';
 
     try {
-        // Concateniamo Proxy + URL del Feed
         const response = await fetch(MY_PROXY + encodeURIComponent(FEED_URL));
         const data = await response.json();
         const items = data.items || [];
 
-        // Filtro per i deal al 100%
+        // Filtro per i deal al 100% (basato sulla struttura PolitePol)
         const deals = items.filter(item => {
-            return item.content_html && item.content_html.includes("100%");
+            const content = item.content_html || "";
+            return content.includes("100%");
         });
 
         if (deals.length === 0) {
@@ -155,10 +153,13 @@ async function fetchDeals() {
             return;
         }
 
+        // Puliamo il container prima di aggiungere le card
         container.innerHTML = '';
+        
         deals.forEach(item => {
             const card = document.createElement('div');
             card.className = 'deal-card';
+            // Il dataset serve per rendere la ricerca più veloce
             card.innerHTML = `
                 <div class="developer">PLUGIN GRATUITO</div>
                 <div class="plugin-name">${item.title}</div>
@@ -173,11 +174,32 @@ async function fetchDeals() {
         loader.style.display = 'none';
 
     } catch (error) {
-        loader.innerHTML = "<p>Errore CORS o di connessione.</p>";
-        console.error("Errore fetch:", error);
+        loader.innerHTML = "<p>Errore nel caricamento. Riprova.</p>";
+        console.error("Errore:", error);
     }
 }
-    fetchDeals();
+
+// 2. LOGICA DI RICERCA (IL FIX)
+// Usiamo l'evento 'input' sull'ID 'search'
+document.getElementById('search').addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase();
+    const cards = document.querySelectorAll('.deal-card');
+
+    cards.forEach(card => {
+        // Leggiamo tutto il testo contenuto nella card (titolo, developer, ecc.)
+        const content = card.textContent.toLowerCase();
+        
+        // Se il termine cercato è presente, mostriamo la card, altrimenti la nascondiamo
+        if (content.includes(searchTerm)) {
+            card.style.display = "flex"; // Usiamo flex per mantenere il layout originale
+        } else {
+            card.style.display = "none";
+        }
+    });
+});
+
+// Avvia il caricamento al boot dell'app
+fetchDeals();
 </script>
 
 </body>
