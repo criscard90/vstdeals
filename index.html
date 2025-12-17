@@ -118,6 +118,7 @@ h1 {
 .deal-info {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
     margin-top: 5px;
     gap: 5px;
@@ -139,6 +140,18 @@ h1 {
     flex-shrink: 0;
 }
 
+.chk-container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: auto;
+}
+
+.chk-label {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+}
+
 .search-bar {
     width: 100%;
     max-width: 600px;
@@ -157,11 +170,6 @@ h1 {
 .card-redeemed .developer { color: var(--redeemed); }
 .card-seen.card-redeemed .developer { color: var(--redeemed); font-style: italic; }
 
-.chk-label {
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    margin-left: 4px;
-}
 </style>
 </head>
 <body>
@@ -235,7 +243,7 @@ async function fetchDeals() {
             const dealId = item.url;
             const isSeen = seenDeals.includes(dealId);
             const isRedeemed = redeemedDeals.includes(dealId);
-            const pubDate = item.pubDate ? new Date(item.pubDate).toLocaleDateString() : '';
+            const pubDate = item.date_published ? new Date(item.date_published).toLocaleDateString() : '';
 
             const card = document.createElement('div');
             card.className = 'deal-card';
@@ -249,7 +257,10 @@ async function fetchDeals() {
                 <div class="deal-info">
                     <span class="price">100% OFF</span>
                     <a href="${item.url}" target="_blank" class="btn-get">RISCATTA</a>
-                    <label><input type="checkbox" class="chk-redeemed" ${isRedeemed ? 'checked' : ''}> <span class="chk-label">Segna come riscattato</span></label>
+                    <div class="chk-container">
+                        <input type="checkbox" class="chk-redeemed" ${isRedeemed ? 'checked' : ''}>
+                        <span class="chk-label">Segna come riscattato</span>
+                    </div>
                 </div>
             `;
 
@@ -260,7 +271,8 @@ async function fetchDeals() {
                 markAsSeen(dealId);
                 card.classList.add('card-seen');
                 const devDiv = card.querySelector('.developer');
-                if (!isRedeemed) devDiv.textContent = 'VISTO';
+                const nowRedeemed = getRedeemedDeals().includes(dealId);
+                devDiv.textContent = nowRedeemed ? 'RISCATTATO' : 'VISTO';
             });
 
             // CHECKBOX riscattato
@@ -268,8 +280,18 @@ async function fetchDeals() {
             chk.addEventListener('change', () => {
                 toggleRedeemed(dealId);
                 card.classList.toggle('card-redeemed', chk.checked);
+
                 const devDiv = card.querySelector('.developer');
-                devDiv.textContent = chk.checked ? 'RISCATTATO' : (isSeen ? 'VISTO' : 'PLUGIN GRATUITO');
+                const nowSeen = getSeenDeals().includes(dealId);
+                const nowRedeemed = getRedeemedDeals().includes(dealId);
+
+                if(nowRedeemed){
+                    devDiv.textContent = 'RISCATTATO';
+                } else if(nowSeen){
+                    devDiv.textContent = 'VISTO';
+                } else {
+                    devDiv.textContent = 'PLUGIN GRATUITO';
+                }
             });
         });
 
@@ -322,7 +344,7 @@ document.getElementById('reset-storage').addEventListener('click', () => {
     if(confirm('Sei sicuro di voler resettare tutti i visti e riscattati?')) {
         localStorage.removeItem('seenDeals');
         localStorage.removeItem('redeemedDeals');
-        fetchDeals(); // ricarica i deal
+        fetchDeals();
     }
 });
 
