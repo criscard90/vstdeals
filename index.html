@@ -134,47 +134,70 @@ const TARGET_URL = 'https://www.audiopluginguy.com/deals/';
 
 async function fetchDeals() {
     const loader = document.getElementById('loader');
+    // AllOrigins usa questo formato per evitare il blocco CORS
+    const ALL_ORIGINS_PROXY = `https://api.allorigins.win/get?url=${encodeURIComponent(TARGET_URL)}`;
+
     try {
-        const response = await fetch(PROXY_URL + encodeURIComponent(TARGET_URL));
-        const html = await response.text();
+        const response = await fetch(ALL_ORIGINS_PROXY);
+        if (!response.ok) throw new Error("Errore risposta proxy");
         
-        // Cerchiamo la variabile JSON che contiene i dati della tabella nel testo HTML
-        // Il plugin wpDataTables salva i dati in una variabile chiamata 'dataSet' o simile
+        const data = await response.json();
+        // L'HTML della pagina è dentro data.contents
+        const html = data.contents;
+
+        // 1. Prova a cercare i dati nel JSON "nascosto" (DataSet)
         const dataSearch = html.match(/\"dataSet\":\s*(\[\[.*?\]\])/);
 
-        if (!dataSearch || !dataSearch[1]) {
-            loader.innerHTML = "<i class='fas fa-exclamation-triangle'></i><p>Dati non trovati. Il sito potrebbe aver cambiato protezione.</p>";
-            return;
+        if (dataSearch && dataSearch[1]) {
+            const rawData = JSON.parse(dataSearch[1]);
+            const deals = rawData
+                .filter(row => row.some(cell => cell && cell.toString().includes("100%")))
+                .map(row => ({
+                    description: row[0].replace(/<\/?[^>]+(>|$)/g, ""),
+                    discount: "100%",
+                    ends: row[2],
+                    link: extractUrl(row[4])
+                }));
+
+            if (deals.length > 0) {
+                displayDeals(deals);
+                loader.style.display = 'none';
+                return;
+            }
         }
 
-        const rawData = JSON.parse(dataSearch[1]);
-        
-        // Filtriamo i dati: cerchiamo "100%"
-        const deals = rawData
-            .filter(row => row.some(cell => cell && cell.toString().includes("100%")))
-            .map(row => ({
-                description: row[0].replace(/<\/?[^>]+(>|$)/g, ""), // Rimuove eventuali tag HTML
-                discount: "100%",
-                ends: row[2],
-                link: extractUrl(row[4])
-            }));
+        // 2. Se il DataSet non c'è, proviamo il parsing della tabella HTML classica
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const rows = doc.querySelectorAll('tr'); // Cerchiamo tutte le righe
+        let dealsFallback = [];
 
-        if (deals.length === 0) {
-            loader.innerHTML = "<i class='fas fa-coffee'></i><p>Nessun regalo al 100% oggi. Torna domani!</p>";
-        } else {
-            displayDeals(deals);
+        rows.forEach(row => {
+            const rowText = row.innerText || "";
+            if (rowText.includes("100%")) {
+                const cells = row.querySelectorAll('td');
+                if (cells.length >= 2) {
+                    dealsFallback.push({
+                        description: cells[0].innerText.trim(),
+                        discount: "100%",
+                        ends: cells[2] ? cells[2].innerText.trim() : "N/D",
+                        link: cells[4] ? (cells[4].querySelector('a')?.href || "#") : "#"
+                    });
+                }
+            }
+        });
+
+        if (dealsFallback.length > 0) {
+            displayDeals(dealsFallback);
             loader.style.display = 'none';
+        } else {
+            loader.innerHTML = "<i class='fas fa-search'></i><p>Nessun deal 100% trovato o sito ancora bloccato.</p>";
         }
 
     } catch (error) {
-        loader.innerHTML = "<p>Errore di connessione al Worker.</p>";
-        console.error(error);
+        loader.innerHTML = "<p>Errore durante il recupero dei dati.</p>";
+        console.error("Dettaglio errore:", error);
     }
-}
-
-function extractUrl(str) {
-    const match = str.match(/href="([^"]+)"/);
-    return match ? match[1] : "#";
 }
 
     fetchDeals();
