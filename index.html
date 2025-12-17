@@ -134,69 +134,50 @@ const TARGET_URL = 'https://www.audiopluginguy.com/deals/';
 
 async function fetchDeals() {
     const loader = document.getElementById('loader');
-    // AllOrigins usa questo formato per evitare il blocco CORS
-    const ALL_ORIGINS_PROXY = `https://api.allorigins.win/get?url=${encodeURIComponent(TARGET_URL)}`;
+    const container = document.getElementById('deals-container');
+    const FEED_URL = 'https://politepol.com/fd/n16wyFGjEXT1.json';
 
     try {
-        const response = await fetch(ALL_ORIGINS_PROXY);
-        if (!response.ok) throw new Error("Errore risposta proxy");
-        
+        const response = await fetch(FEED_URL);
         const data = await response.json();
-        // L'HTML della pagina è dentro data.contents
-        const html = data.contents;
+        const items = data.items || [];
 
-        // 1. Prova a cercare i dati nel JSON "nascosto" (DataSet)
-        const dataSearch = html.match(/\"dataSet\":\s*(\[\[.*?\]\])/);
-
-        if (dataSearch && dataSearch[1]) {
-            const rawData = JSON.parse(dataSearch[1]);
-            const deals = rawData
-                .filter(row => row.some(cell => cell && cell.toString().includes("100%")))
-                .map(row => ({
-                    description: row[0].replace(/<\/?[^>]+(>|$)/g, ""),
-                    discount: "100%",
-                    ends: row[2],
-                    link: extractUrl(row[4])
-                }));
-
-            if (deals.length > 0) {
-                displayDeals(deals);
-                loader.style.display = 'none';
-                return;
-            }
-        }
-
-        // 2. Se il DataSet non c'è, proviamo il parsing della tabella HTML classica
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        const rows = doc.querySelectorAll('tr'); // Cerchiamo tutte le righe
-        let dealsFallback = [];
-
-        rows.forEach(row => {
-            const rowText = row.innerText || "";
-            if (rowText.includes("100%")) {
-                const cells = row.querySelectorAll('td');
-                if (cells.length >= 2) {
-                    dealsFallback.push({
-                        description: cells[0].innerText.trim(),
-                        discount: "100%",
-                        ends: cells[2] ? cells[2].innerText.trim() : "N/D",
-                        link: cells[4] ? (cells[4].querySelector('a')?.href || "#") : "#"
-                    });
-                }
-            }
+        // FILTRO: Solo dove content_html contiene esattamente 100%
+        const deals = items.filter(item => {
+            return item.content_html && item.content_html.includes("100%");
         });
 
-        if (dealsFallback.length > 0) {
-            displayDeals(dealsFallback);
-            loader.style.display = 'none';
-        } else {
-            loader.innerHTML = "<i class='fas fa-search'></i><p>Nessun deal 100% trovato o sito ancora bloccato.</p>";
+        if (deals.length === 0) {
+            loader.innerHTML = `
+                <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                <p>Nessun regalo al 100% oggi.<br>Riprova più tardi!</p>
+            `;
+            return;
         }
 
+        container.innerHTML = '';
+        deals.forEach(item => {
+            // Puliamo un po' il titolo se contiene "is offering 100% off"
+            const cleanTitle = item.title.replace(/is offering 100% off/gi, "FREE:");
+
+            const card = document.createElement('div');
+            card.className = 'deal-card';
+            card.innerHTML = `
+                <div class="developer">PLUGIN GRATUITO</div>
+                <div class="plugin-name">${cleanTitle}</div>
+                <div class="deal-info">
+                    <span class="price">100% OFF</span>
+                    <a href="${item.url}" target="_blank" class="btn-get">RISCATTA</a>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+
+        loader.style.display = 'none';
+
     } catch (error) {
-        loader.innerHTML = "<p>Errore durante il recupero dei dati.</p>";
-        console.error("Dettaglio errore:", error);
+        loader.innerHTML = "<p>Errore di sincronizzazione dati.</p>";
+        console.error("Errore feed:", error);
     }
 }
 
