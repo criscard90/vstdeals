@@ -129,52 +129,57 @@
 <div id="deals-container"></div>
 
 <script>
-    const WORKER_URL = 'https://vstdeals.ccmixmastering.workers.dev/'; // <--- INSERISCI IL TUO URL QUI
+    const PROXY_URL = 'https://TUO-WORKER.workers.dev/?url='; 
+const TARGET_URL = 'https://www.audiopluginguy.com/deals/';
 
-    async function fetchDeals() {
-        try {
-            const response = await fetch(WORKER_URL);
-            const data = await response.json();
-            displayDeals(data);
-            document.getElementById('loader').style.display = 'none';
-        } catch (error) {
-            document.getElementById('loader').innerHTML = "Errore nel caricamento.";
-            console.error(error);
+async function fetchDeals() {
+    try {
+        const response = await fetch(PROXY_URL + encodeURIComponent(TARGET_URL));
+        const html = await response.text();
+        
+        // Creiamo un documento virtuale per analizzare l'HTML
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        
+        // Cerchiamo lo script che contiene i dati della tabella
+        const scripts = Array.from(doc.querySelectorAll('script'));
+        const dataScript = scripts.find(s => s.textContent.includes('wpDataTables'));
+
+        if (dataScript) {
+            // Estraiamo il JSON dei dati dalla variabile JavaScript del sito
+            const jsonMatch = dataScript.textContent.match(/\{.*?\}/s);
+            // Nota: Se i dati sono codificati, questa parte richiede un regex specifico
+            // Ma per ora proviamo a leggere la tabella se presente nel codice statico
         }
-    }
 
-    function displayDeals(deals) {
-        const container = document.getElementById('deals-container');
-        container.innerHTML = '';
+        // Metodo di riserva: Leggi la tabella HTML se il server la invia pre-compilata
+        const rows = doc.querySelectorAll('#ult-dataTable tbody tr');
+        let deals = [];
 
-// Nel tuo index.html, cambia il ciclo forEach così:
-deals.forEach(deal => {
-    const card = document.createElement('div');
-    card.className = 'deal-card';
-    card.innerHTML = `
-        <div class="developer">OFFERTA 100%</div>
-        <div class="plugin-name">${deal.description}</div>
-        <div class="deal-info">
-            <span class="price">GRATIS</span>
-            <span style="font-size: 0.8rem; color: var(--text-dim)">Scade: ${deal.ends}</span>
-            <a href="${deal.link}" target="_blank" class="btn-get">PRENDI</a>
-        </div>
-    `;
-    container.appendChild(card);
-});
-    }
-
-    // Filtro ricerca semplice
-    document.getElementById('search').addEventListener('input', (e) => {
-        const term = e.target.value.toLowerCase();
-        const cards = document.querySelectorAll('.deal-card');
-        cards.forEach(card => {
-            const text = card.innerText.toLowerCase();
-            card.style.display = text.includes(term) ? 'flex' : 'none';
+        rows.forEach(row => {
+            const discount = row.querySelector('.column-2')?.textContent || "";
+            if (discount.includes("100%")) {
+                deals.push({
+                    description: row.querySelector('.column-1')?.textContent,
+                    discount: discount,
+                    ends: row.querySelector('.column-3')?.textContent,
+                    link: row.querySelector('.column-5 a')?.getAttribute('href')
+                });
+            }
         });
-    });
 
-    fetchDeals();
+        if (deals.length === 0) {
+            document.getElementById('loader').innerHTML = "Nessun deal 100% trovato oggi.";
+        } else {
+            displayDeals(deals);
+            document.getElementById('loader').style.display = 'none';
+        }
+
+    } catch (error) {
+        document.getElementById('loader').innerHTML = "Errore di connessione.";
+        console.error(error);
+    }
+}
 </script>
 
 </body>
