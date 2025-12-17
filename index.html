@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Plugin Deals</title>
+    <link rel="manifest" href="manifest.json">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --accent: #38bdf8;
+            --text: #f1f5f9;
+            --text-dim: #94a3b8;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        #loader {
+            text-align: center;
+            padding: 50px;
+            color: var(--accent);
+        }
+
+        /* Container delle Card */
+        #deals-container {
+            display: grid;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .deal-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .deal-card:active {
+            transform: scale(0.98);
+        }
+
+        .developer {
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .plugin-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .deal-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #4ade80;
+        }
+
+        .btn-get {
+            background: var(--accent);
+            color: var(--bg);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .search-bar {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto 20px auto;
+            display: block;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            background: var(--card);
+            color: white;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1><i class="fas fa-wave-square"></i> Plugin Deals</h1>
+</header>
+
+<input type="text" id="search" class="search-bar" placeholder="Cerca plugin o brand...">
+
+<div id="loader">
+    <i class="fas fa-circle-notch fa-spin fa-2x"></i>
+    <p>Sintonizzando le offerte...</p>
+</div>
+
+<div id="deals-container"></div>
+
+<script>
+    const WORKER_URL = 'https://TUO-WORKER.workers.dev/'; // <--- INSERISCI IL TUO URL QUI
+
+    async function fetchDeals() {
+        try {
+            const response = await fetch(WORKER_URL);
+            const data = await response.json();
+            displayDeals(data);
+            document.getElementById('loader').style.display = 'none';
+        } catch (error) {
+            document.getElementById('loader').innerHTML = "Errore nel caricamento.";
+            console.error(error);
+        }
+    }
+
+    function displayDeals(deals) {
+        const container = document.getElementById('deals-container');
+        container.innerHTML = '';
+
+        deals.forEach(deal => {
+            const card = document.createElement('div');
+            card.className = 'deal-card';
+            card.innerHTML = `
+                <div class="developer">${deal.developer || 'Unknown'}</div>
+                <div class="plugin-name">${deal.plugin || 'No Name'}</div>
+                <div class="deal-info">
+                    <span class="price">${deal.price || deal.deal || 'Sale'}</span>
+                    <a href="${deal.link}" target="_blank" class="btn-get">VAI <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    // Filtro ricerca semplice
+    document.getElementById('search').addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        const cards = document.querySelectorAll('.deal-card');
+        cards.forEach(card => {
+            const text = card.innerText.toLowerCase();
+            card.style.display = text.includes(term) ? 'flex' : 'none';
+        });
+    });
+
+    fetchDeals();
+</script>
+
+</body>
+</html>
