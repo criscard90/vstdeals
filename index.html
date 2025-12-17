@@ -63,6 +63,20 @@ h1 {
     color: var(--bg);
 }
 
+#reset-btn {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#reset-btn button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    background: #ef4444;
+    color: white;
+    cursor: pointer;
+}
+
 #deals-container {
     display: grid;
     gap: 15px;
@@ -94,6 +108,11 @@ h1 {
 .plugin-name {
     font-size: 1.1rem;
     font-weight: 600;
+}
+
+.pub-date {
+    font-size: 0.75rem;
+    color: var(--text-dim);
 }
 
 .deal-info {
@@ -137,6 +156,12 @@ h1 {
 .card-seen .developer { color: var(--seen); }
 .card-redeemed .developer { color: var(--redeemed); }
 .card-seen.card-redeemed .developer { color: var(--redeemed); font-style: italic; }
+
+.chk-label {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-left: 4px;
+}
 </style>
 </head>
 <body>
@@ -152,6 +177,10 @@ h1 {
     <button data-filter="unredeemed">Non riscattati</button>
     <button data-filter="seen">Visti</button>
     <button data-filter="redeemed">Riscattati</button>
+</div>
+
+<div id="reset-btn">
+    <button id="reset-storage">Reset Visti/Riscattati</button>
 </div>
 
 <div id="loader">
@@ -206,6 +235,7 @@ async function fetchDeals() {
             const dealId = item.url;
             const isSeen = seenDeals.includes(dealId);
             const isRedeemed = redeemedDeals.includes(dealId);
+            const pubDate = item.pubDate ? new Date(item.pubDate).toLocaleDateString() : '';
 
             const card = document.createElement('div');
             card.className = 'deal-card';
@@ -215,10 +245,11 @@ async function fetchDeals() {
             card.innerHTML = `
                 <div class="developer">${isRedeemed ? 'RISCATTATO' : (isSeen ? 'VISTO' : 'PLUGIN GRATUITO')}</div>
                 <div class="plugin-name">${item.title}</div>
+                ${pubDate ? `<div class="pub-date">Pubblicato: ${pubDate}</div>` : ''}
                 <div class="deal-info">
                     <span class="price">100% OFF</span>
                     <a href="${item.url}" target="_blank" class="btn-get">RISCATTA</a>
-                    <input type="checkbox" class="chk-redeemed" ${isRedeemed ? 'checked' : ''} title="Segna come riscattato">
+                    <label><input type="checkbox" class="chk-redeemed" ${isRedeemed ? 'checked' : ''}> <span class="chk-label">Segna come riscattato</span></label>
                 </div>
             `;
 
@@ -285,6 +316,15 @@ function applyFilter(filter) {
         card.style.display = show ? 'flex' : 'none';
     });
 }
+
+// --- Reset localStorage ---
+document.getElementById('reset-storage').addEventListener('click', () => {
+    if(confirm('Sei sicuro di voler resettare tutti i visti e riscattati?')) {
+        localStorage.removeItem('seenDeals');
+        localStorage.removeItem('redeemedDeals');
+        fetchDeals(); // ricarica i deal
+    }
+});
 
 // --- Avvio ---
 fetchDeals();
