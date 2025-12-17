@@ -133,52 +133,48 @@
 const TARGET_URL = 'https://www.audiopluginguy.com/deals/';
 
 async function fetchDeals() {
+    const loader = document.getElementById('loader');
     try {
         const response = await fetch(PROXY_URL + encodeURIComponent(TARGET_URL));
         const html = await response.text();
         
-        // Creiamo un documento virtuale per analizzare l'HTML
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        
-        // Cerchiamo lo script che contiene i dati della tabella
-        const scripts = Array.from(doc.querySelectorAll('script'));
-        const dataScript = scripts.find(s => s.textContent.includes('wpDataTables'));
+        // Cerchiamo la variabile JSON che contiene i dati della tabella nel testo HTML
+        // Il plugin wpDataTables salva i dati in una variabile chiamata 'dataSet' o simile
+        const dataSearch = html.match(/\"dataSet\":\s*(\[\[.*?\]\])/);
 
-        if (dataScript) {
-            // Estraiamo il JSON dei dati dalla variabile JavaScript del sito
-            const jsonMatch = dataScript.textContent.match(/\{.*?\}/s);
-            // Nota: Se i dati sono codificati, questa parte richiede un regex specifico
-            // Ma per ora proviamo a leggere la tabella se presente nel codice statico
+        if (!dataSearch || !dataSearch[1]) {
+            loader.innerHTML = "<i class='fas fa-exclamation-triangle'></i><p>Dati non trovati. Il sito potrebbe aver cambiato protezione.</p>";
+            return;
         }
 
-        // Metodo di riserva: Leggi la tabella HTML se il server la invia pre-compilata
-        const rows = doc.querySelectorAll('#ult-dataTable tbody tr');
-        let deals = [];
-
-        rows.forEach(row => {
-            const discount = row.querySelector('.column-2')?.textContent || "";
-            if (discount.includes("100%")) {
-                deals.push({
-                    description: row.querySelector('.column-1')?.textContent,
-                    discount: discount,
-                    ends: row.querySelector('.column-3')?.textContent,
-                    link: row.querySelector('.column-5 a')?.getAttribute('href')
-                });
-            }
-        });
+        const rawData = JSON.parse(dataSearch[1]);
+        
+        // Filtriamo i dati: cerchiamo "100%"
+        const deals = rawData
+            .filter(row => row.some(cell => cell && cell.toString().includes("100%")))
+            .map(row => ({
+                description: row[0].replace(/<\/?[^>]+(>|$)/g, ""), // Rimuove eventuali tag HTML
+                discount: "100%",
+                ends: row[2],
+                link: extractUrl(row[4])
+            }));
 
         if (deals.length === 0) {
-            document.getElementById('loader').innerHTML = "Nessun deal 100% trovato oggi.";
+            loader.innerHTML = "<i class='fas fa-coffee'></i><p>Nessun regalo al 100% oggi. Torna domani!</p>";
         } else {
             displayDeals(deals);
-            document.getElementById('loader').style.display = 'none';
+            loader.style.display = 'none';
         }
 
     } catch (error) {
-        document.getElementById('loader').innerHTML = "Errore di connessione.";
+        loader.innerHTML = "<p>Errore di connessione al Worker.</p>";
         console.error(error);
     }
+}
+
+function extractUrl(str) {
+    const match = str.match(/href="([^"]+)"/);
+    return match ? match[1] : "#";
 }
 </script>
 
