@@ -263,7 +263,7 @@ async function fetchDeals() {
             const isSeen = seenDeals.includes(dealId);
             const isRedeemed = redeemedDeals.includes(dealId);
             const isIgnored = ignoredDeals.includes(dealId);
-            const pubDate = item.pubDate ? new Date(item.pubDate).toLocaleDateString() : '';
+            const pubDate = item.date_published ? new Date(item.date_published).toLocaleDateString("IT"): '';
 
             const card = document.createElement('div');
             card.className = 'deal-card';
@@ -277,11 +277,10 @@ async function fetchDeals() {
                 <div class="plugin-name">${item.title}</div>
                 ${pubDate ? `<div class="pub-date">Pubblicato: ${pubDate}</div>` : ''}
                 <div class="deal-info">
-                    <span class="price">100% OFF</span>
                     <a href="${item.url}" target="_blank" class="btn-get">RISCATTA</a>
+                    <input type="checkbox" class="chk-redeemed" ${isRedeemed ? 'checked' : ''}>
+                    <span class="chk-label">Segna come riscattato</span>
                     <div class="chk-container">
-                        <input type="checkbox" class="chk-redeemed" ${isRedeemed ? 'checked' : ''}>
-                        <span class="chk-label">Segna come riscattato</span>
                         <button class="btn-ignore">Non mi interessa</button>
                     </div>
                 </div>
