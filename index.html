@@ -199,7 +199,7 @@ h1 {
 </div>
 
 <div id="reset-btn">
-    <button id="reset-storage">Reset Visti/Riscattati/Non interessati</button>
+    <button id="reset-storage">Reset Visti/Riscattati/Non mi interessa</button>
 </div>
 
 <div id="loader">
@@ -376,7 +376,7 @@ function applyFilter(filter) {
 
 // --- Reset localStorage ---
 document.getElementById('reset-storage').addEventListener('click', () => {
-    if(confirm('Sei sicuro di voler resettare tutti i visti, riscattati e non interessati?')) {
+    if(confirm('Sei sicuro di voler resettare tutti i visti, riscattati e Non mi interessa?')) {
         localStorage.removeItem('seenDeals');
         localStorage.removeItem('redeemedDeals');
         localStorage.removeItem('ignoredDeals');
