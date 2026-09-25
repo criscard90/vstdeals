@@ -1,0 +1,18 @@
+{
+  "name": "vstdeals-pwa",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "PWA con scraping diretto di Audio Plugin Deals (senza feed che scade)",
+  "scripts": {
+    "test": "node test/parser.test.mjs && node test/posts.test.mjs && node test/assets.test.mjs",
+    "icons": "python3 scripts/generate-icons.py",
+    "scrape": "node scripts/scrape.mjs",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail"
+  },
+  "devDependencies": {
+    "wrangler": "^3.90.0"
+  }
+}

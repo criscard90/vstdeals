@@ -1,15 +1,45 @@
 {
-  "name": "Plugin Deals Live",
-  "short_name": "Deals",
-  "start_url": ".",
+  "id": "/",
+  "name": "Plugin Deals — offerte VST",
+  "short_name": "Plugin Deals",
+  "description": "Offerte e plugin gratuiti per VST, raccolti con scraping diretto da Audio Plugin Deals.",
+  "lang": "it",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#38bdf8",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "orientation": "portrait-primary",
+  "background_color": "#0b1120",
+  "theme_color": "#0b1120",
+  "categories": ["music", "productivity", "utilities"],
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/3659/3659744.png",
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Solo gratuiti",
+      "short_name": "Gratis",
+      "description": "Filtra i plugin gratuiti",
+      "url": "./?filtro=gratuiti",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
     }
   ]
 }

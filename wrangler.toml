@@ -1,0 +1,7 @@
+name = "vstdeals"
+main = "worker.js"
+compatibility_date = "2024-11-06"
+
+# Il worker non ha variabili d'ambiente: la lista host e' in worker.js (ALLOWED_HOSTS).
+# Deploy:  npm run deploy
+# Log:     npm run tail

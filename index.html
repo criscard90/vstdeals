@@ -2,390 +2,84 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Audio Plugin Deals</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Plugin Deals</title>
+<meta name="description" content="Offerte e plugin gratuiti per VST, raccolti con scraping diretto da Audio Plugin Deals.">
+
+<!-- PWA -->
 <link rel="manifest" href="manifest.json">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-<style>
-:root {
-    --bg: #0f172a;
-    --card: #1e293b;
-    --accent: #38bdf8;
-    --text: #f1f5f9;
-    --text-dim: #94a3b8;
-    --seen: #facc15;
-    --redeemed: #4ade80;
-    --ignored: #f87171;
-}
+<meta name="theme-color" content="#0b1120">
+<meta name="color-scheme" content="dark">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" href="icons/favicon.png" sizes="any">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 
-body {
-    font-family: 'Segoe UI', system-ui, sans-serif;
-    background-color: var(--bg);
-    color: var(--text);
-    margin: 0;
-    padding: 20px;
-}
-
-header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-h1 {
-    font-size: 1.5rem;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-#loader {
-    text-align: center;
-    padding: 50px;
-    color: var(--accent);
-}
-
-#filters {
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-#filters button {
-    margin: 0 5px 5px 0;
-    padding: 6px 12px;
-    border: none;
-    border-radius: 6px;
-    background: var(--card);
-    color: var(--text);
-    cursor: pointer;
-}
-
-#filters button.active {
-    background: var(--accent);
-    color: var(--bg);
-}
-
-#reset-btn {
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-#reset-btn button {
-    padding: 6px 12px;
-    border: none;
-    border-radius: 6px;
-    background: #ef4444;
-    color: white;
-    cursor: pointer;
-}
-
-#deals-container {
-    display: grid;
-    gap: 15px;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.deal-card {
-    background: var(--card);
-    border-radius: 12px;
-    padding: 16px;
-    border: 1px solid rgba(255,255,255,0.05);
-    transition: transform 0.2s;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.deal-card:active {
-    transform: scale(0.98);
-}
-
-.developer {
-    font-size: 0.75rem;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.plugin-name {
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.pub-date {
-    font-size: 0.75rem;
-    color: var(--text-dim);
-}
-
-.deal-info {
-    display: flex;
-    justify-content: normal;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-top: 5px;
-    gap: 5px;
-}
-
-.price {
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-.btn-get {
-    background: var(--accent);
-    color: var(--bg);
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 0.9rem;
-    flex-shrink: 0;
-}
-
-.chk-container {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    margin-left: auto;
-}
-
-.chk-label {
-    font-size: 0.75rem;
-    color: var(--text-dim);
-}
-
-.btn-ignore {
-    background: var(--ignored);
-    color: var(--bg);
-    border: none;
-    padding: 4px 8px;
-    border-radius: 6px;
-    font-size: 0.7rem;
-    cursor: pointer;
-}
-
-/* Stati */
-.card-seen .developer { color: var(--seen); }
-.card-redeemed .developer { color: var(--redeemed); }
-.card-seen.card-redeemed .developer { color: var(--redeemed); font-style: italic; }
-.card-ignored .developer { color: var(--ignored); font-style: italic; }
-.search-bar {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto 10px auto;
-    display: block;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    background: var(--card);
-    color: white;
-    box-sizing: border-box;
-}
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header>
-    <h1><i class="fas fa-wave-square"></i> Plugin Deals</h1>
+<header class="app-header">
+  <h1>
+    <svg class="logo" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M2 12h2.5l2-6 3 13 3-9 2 4H22" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Plugin Deals
+  </h1>
+  <p class="tagline">Scraping diretto da audiopluginguy.com — niente feed che scadono</p>
 </header>
 
-<input type="text" id="search" class="search-bar" placeholder="Cerca plugin o brand...">
+<main class="app-main">
+  <div class="toolbar">
+    <label class="search-wrap">
+      <span class="visually-hidden">Cerca plugin o sviluppatore</span>
+      <input type="search" id="search" placeholder="Cerca plugin, sviluppatore o tag…" autocomplete="off">
+    </label>
 
-<div id="filters">
-    <button data-filter="all" class="active">Tutti</button>
-    <button data-filter="unredeemed">Non riscattati</button>
-    <button data-filter="seen">Visti</button>
-    <button data-filter="redeemed">Riscattati</button>
-    <button data-filter="ignored">Non mi interessa</button>
-</div>
+    <div class="toolbar-row">
+      <label class="switch">
+        <input type="checkbox" id="free-only" checked>
+        <span>Solo gratuiti</span>
+      </label>
 
-<div id="reset-btn">
-    <button id="reset-storage">Reset Visti/Riscattati/Non mi interessa</button>
-</div>
+      <div class="toolbar-actions">
+        <button type="button" id="refresh" class="btn btn-ghost">Aggiorna</button>
+        <button type="button" id="reset" class="btn btn-danger">Azzera segni</button>
+      </div>
+    </div>
+  </div>
 
-<div id="loader">
-    <i class="fas fa-circle-notch fa-spin fa-2x"></i>
-    <p>Sintonizzando le offerte...</p>
-</div>
+  <nav id="filters" aria-label="Filtri">
+    <button type="button" data-filter="all" data-label="Tutti" class="active">Tutti</button>
+    <button type="button" data-filter="unredeemed" data-label="Da riscattare">Da riscattare</button>
+    <button type="button" data-filter="seen" data-label="Visti">Visti</button>
+    <button type="button" data-filter="redeemed" data-label="Riscattati">Riscattati</button>
+    <button type="button" data-filter="ignored" data-label="Non mi interessa">Non mi interessa</button>
+  </nav>
 
-<div id="deals-container"></div>
+  <p id="status" class="status" hidden></p>
+  <p id="summary" class="summary"></p>
 
-<script>
-const MY_PROXY = 'https://vstdeals.ccmixmastering.workers.dev/?url=';
-const FEED_URL = 'https://politepol.com/fd/wTw62jsUzOHO.json';
+  <div id="loader" class="loader">
+    <span class="spinner" aria-hidden="true"></span>
+    <p>Sintonizzando le offerte…</p>
+  </div>
 
-// --- LocalStorage helpers ---
-function getSeenDeals() { return JSON.parse(localStorage.getItem('seenDeals') || '[]'); }
-function markAsSeen(dealId) {
-    const seen = getSeenDeals();
-    if (!seen.includes(dealId)) { seen.push(dealId); localStorage.setItem('seenDeals', JSON.stringify(seen)); }
-}
+  <section id="error" class="panel-error" hidden></section>
 
-function getRedeemedDeals() { return JSON.parse(localStorage.getItem('redeemedDeals') || '[]'); }
-function toggleRedeemed(dealId) {
-    const redeemed = getRedeemedDeals();
-    if (redeemed.includes(dealId)) {
-        const index = redeemed.indexOf(dealId); redeemed.splice(index, 1);
-    } else { redeemed.push(dealId); }
-    localStorage.setItem('redeemedDeals', JSON.stringify(redeemed));
-}
+  <p id="empty" class="empty" hidden></p>
 
-function getIgnoredDeals() { return JSON.parse(localStorage.getItem('ignoredDeals') || '[]'); }
-function toggleIgnored(dealId) {
-    const ignored = getIgnoredDeals();
-    if(!ignored.includes(dealId)) ignored.push(dealId);
-    localStorage.setItem('ignoredDeals', JSON.stringify(ignored));
-}
+  <section id="deals" class="deals" aria-label="Elenco offerte" aria-live="polite"></section>
+</main>
 
-// --- Fetch deals ---
-async function fetchDeals() {
-    const loader = document.getElementById('loader');
-    const container = document.getElementById('deals-container');
+<footer class="app-footer">
+  <p>
+    I link sono affiliati: acquistando tramite questi link sostieni il sito.
+    I dati arrivano da
+    <a href="https://www.audiopluginguy.com/deals/" target="_blank" rel="noopener noreferrer">Audio Plugin Deals</a>.
+  </p>
+</footer>
 
-    try {
-        const response = await fetch(MY_PROXY + encodeURIComponent(FEED_URL));
-        const data = await response.json();
-        const items = data.items || [];
-
-        const deals = items.filter(item => {
-            const content = item.content_html || "";
-            return content.includes("100%");
-        });
-
-        if (deals.length === 0) { loader.innerHTML = "<p>Nessun regalo al 100% trovato oggi.</p>"; return; }
-
-        container.innerHTML = '';
-        const seenDeals = getSeenDeals();
-        const redeemedDeals = getRedeemedDeals();
-        const ignoredDeals = getIgnoredDeals();
-
-        deals.forEach(item => {
-            const dealId = item.url;
-            const isSeen = seenDeals.includes(dealId);
-            const isRedeemed = redeemedDeals.includes(dealId);
-            const isIgnored = ignoredDeals.includes(dealId);
-            const pubDate = item.date_published ? new Date(item.date_published).toLocaleDateString("IT"): '';
-
-            const card = document.createElement('div');
-            card.className = 'deal-card';
-            if (isSeen) card.classList.add('card-seen');
-            if (isRedeemed) card.classList.add('card-redeemed');
-            if (isIgnored) card.classList.add('card-ignored');
-            if (isIgnored) card.style.display = 'none';
-
-            card.innerHTML = `
-                <div class="developer">${isRedeemed ? 'RISCATTATO' : (isSeen ? 'VISTO' : (isIgnored ? 'NON INTERESSA' : 'PLUGIN GRATUITO'))}</div>
-                <div class="plugin-name">${item.title}</div>
-                ${pubDate ? `<div class="pub-date">Pubblicato: ${pubDate}</div>` : ''}
-                <div class="deal-info">
-                    <a href="${item.url}" target="_blank" class="btn-get">RISCATTA</a>
-                    <input type="checkbox" class="chk-redeemed" ${isRedeemed ? 'checked' : ''}>
-                    <span class="chk-label">Segna come riscattato</span>
-                    <div class="chk-container">
-                        <button class="btn-ignore">Non mi interessa</button>
-                    </div>
-                </div>
-            `;
-
-            container.appendChild(card);
-
-            // CLICK sul link → segna come visto
-            card.querySelector('.btn-get').addEventListener('click', () => {
-                markAsSeen(dealId);
-                card.classList.add('card-seen');
-                const devDiv = card.querySelector('.developer');
-                const nowRedeemed = getRedeemedDeals().includes(dealId);
-                devDiv.textContent = nowRedeemed ? 'RISCATTATO' : 'VISTO';
-            });
-
-            // CHECKBOX riscattato
-            const chk = card.querySelector('.chk-redeemed');
-            chk.addEventListener('change', () => {
-                toggleRedeemed(dealId);
-                card.classList.toggle('card-redeemed', chk.checked);
-
-                const devDiv = card.querySelector('.developer');
-                const nowSeen = getSeenDeals().includes(dealId);
-                const nowRedeemed = getRedeemedDeals().includes(dealId);
-                const nowIgnored = getIgnoredDeals().includes(dealId);
-
-                if(nowIgnored) devDiv.textContent = 'NON INTERESSA';
-                else if(nowRedeemed) devDiv.textContent = 'RISCATTATO';
-                else if(nowSeen) devDiv.textContent = 'VISTO';
-                else devDiv.textContent = 'PLUGIN GRATUITO';
-            });
-
-            // NON MI INTERESSA
-            const btnIgnore = card.querySelector('.btn-ignore');
-            btnIgnore.addEventListener('click', () => {
-                if(confirm('Vuoi rimuovere questo plugin dalla lista?')) {
-                    toggleIgnored(dealId);
-                    card.classList.add('card-ignored');
-                    card.style.display = 'none';
-                }
-            });
-        });
-
-        loader.style.display = 'none';
-    } catch (error) {
-        loader.innerHTML = "<p>Errore nel caricamento. Riprova.</p>";
-        console.error("Errore:", error);
-    }
-}
-
-// --- Ricerca ---
-document.getElementById('search').addEventListener('input', function(e) {
-    const searchTerm = e.target.value.toLowerCase();
-    const cards = document.querySelectorAll('.deal-card');
-    cards.forEach(card => {
-        const content = card.textContent.toLowerCase();
-        card.style.display = content.includes(searchTerm) ? "flex" : "none";
-    });
-});
-
-// --- Filtri ---
-const filterButtons = document.querySelectorAll('#filters button');
-filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.dataset.filter;
-        applyFilter(filter);
-    });
-});
-
-function applyFilter(filter) {
-    const cards = document.querySelectorAll('.deal-card');
-    const ignoredDeals = getIgnoredDeals();
-    cards.forEach(card => {
-        const isSeen = card.classList.contains('card-seen');
-        const isRedeemed = card.classList.contains('card-redeemed');
-        const dealId = card.querySelector('.btn-get').href;
-        const isIgnored = ignoredDeals.includes(dealId);
-        let show = true;
-
-        switch(filter) {
-            case 'unredeemed': show = !isRedeemed && !isIgnored; break;
-            case 'seen': show = isSeen && !isRedeemed && !isIgnored; break;
-            case 'redeemed': show = isRedeemed; break;
-            case 'ignored': show = isIgnored; break;
-            default: show = !isIgnored; // tutti tranne ignorati
-        }
-        card.style.display = show ? 'flex' : 'none';
-    });
-}
-
-// --- Reset localStorage ---
-document.getElementById('reset-storage').addEventListener('click', () => {
-    if(confirm('Sei sicuro di voler resettare tutti i visti, riscattati e Non mi interessa?')) {
-        localStorage.removeItem('seenDeals');
-        localStorage.removeItem('redeemedDeals');
-        localStorage.removeItem('ignoredDeals');
-        fetchDeals();
-    }
-});
-
-// --- Avvio ---
-fetchDeals();
-</script>
+<script type="module" src="app.js"></script>
 </body>
 </html>
