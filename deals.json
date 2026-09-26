@@ -2,7 +2,7 @@
   "ok": true,
   "source": "audiopluginguy.com/deals",
   "sourceUrl": "https://www.audiopluginguy.com/deals/",
-  "fetchedAt": "2026-09-26T08:12:50.835Z",
+  "fetchedAt": "2026-09-26T16:05:24.721Z",
   "stats": {
     "rows": 369,
     "free": 41,
@@ -947,14 +947,23 @@
     {
       "id": "https://audiodeluxe.com/collections/software/products/uvi-urban-x?sca_ref=8652346.POlMzknLq02of5K&sca_source=APG",
       "title": "Get 61% off UVI Urban X at Audio Deluxe. The discounted price is $19.",
-      "developer": "",
+      "developer": "UVI",
       "url": "https://audiodeluxe.com/collections/software/products/uvi-urban-x?sca_ref=8652346.POlMzknLq02of5K&sca_source=APG",
       "discount": 61,
       "free": false,
       "ends": "2026-09-30",
       "dateAdded": "2026-09-23",
       "tags": [],
-      "badges": []
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "🔥 HOT",
+          "kind": "hot"
+        }
+      ]
     },
     {
       "id": "https://www.pluginboutique.com/product/1-Instruments/4-Synth/11727-Moog-Mariana?a_aid=57ac3d39bf8f6",
