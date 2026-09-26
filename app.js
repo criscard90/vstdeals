@@ -88,6 +88,17 @@ async function fetchWithTimeout(url, options = {}) {
   }
 }
 
+/** Piano 0: deals.json statico presente nel repository (aggiornato da GitHub Actions). */
+async function fetchLocalDeals() {
+  const url = './deals.json?t=' + Math.floor(Date.now() / 60000); // cache bust ogni minuto
+  const response = await fetchWithTimeout(url, { headers: { Accept: 'application/json' } });
+  const data = await response.json().catch(() => null);
+  if (!response.ok || !data || !data.ok || !Array.isArray(data.deals) || !data.deals.length) {
+    throw new Error('deals.json locale non disponibile o non valido.');
+  }
+  return { deals: data.deals, meta: { ...data, source: 'audiopluginguy.com (deals.json)' } };
+}
+
 /** Piano 1: il worker restituisce gia' il JSON dei deal. */
 async function fetchFromWorker(force) {
   const url = new URL(CONFIG.workerUrl);
@@ -396,14 +407,35 @@ async function loadDeals({ force = false } = {}) {
 
   const errors = [];
   let payload = null;
-  try {
-    payload = await fetchFromWorker(force);
-  } catch (primary) {
-    errors.push(`worker: ${primary.message}`);
+
+  // Se l'utente non ha cliccato esplicitamente "Aggiorna", prova prima deals.json (istantaneo e sempre disponibile)
+  if (!force) {
     try {
-      payload = await fetchViaProxy();
-    } catch (fallback) {
-      errors.push(`proxy: ${fallback.message}`);
+      payload = await fetchLocalDeals();
+    } catch (e) {
+      errors.push(`locale: ${e.message}`);
+    }
+  }
+
+  // Se forzato o se il file locale non è bastato, prova il worker e il proxy
+  if (!payload) {
+    try {
+      payload = await fetchFromWorker(force);
+    } catch (primary) {
+      errors.push(`worker: ${primary.message}`);
+      try {
+        payload = await fetchViaProxy();
+      } catch (fallback) {
+        errors.push(`proxy: ${fallback.message}`);
+        // Se anche il worker/proxy fallisce ma abbiamo deals.json, usiamo quello
+        if (force) {
+          try {
+            payload = await fetchLocalDeals();
+          } catch (e) {
+            errors.push(`locale: ${e.message}`);
+          }
+        }
+      }
     }
   }
 

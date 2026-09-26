@@ -7,6 +7,7 @@
   "scripts": {
     "test": "node test/parser.test.mjs && node test/posts.test.mjs && node test/assets.test.mjs",
     "icons": "python3 scripts/generate-icons.py",
+    "build": "node scripts/build-deals.mjs",
     "scrape": "node scripts/scrape.mjs",
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",

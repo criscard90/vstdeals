@@ -21,54 +21,25 @@ di default, vuoto, e `/category/free-plugins/` risponde 404. La fonte usata da
 questo progetto — riotrovata nella cronologia git, dove compariva
 `https://www.audiopluginguy.com/deals/` — è `audiopluginguy.com`.
 
-## Perché serve ancora il Worker
+## Architettura e Aggiornamento dei Dati
 
-Il sito è protetto da Sucuri:
+La PWA dispone ora di un doppio meccanismo di alimentazione:
 
-| Richiesta                                  | Risposta |
-| ------------------------------------------ | -------- |
-| `curl` senza User-Agent                    | `403`    |
-| Worker attuale (fetch "nudo")              | `202` + pagina challenge `/.well-known/sgcaptcha/` |
-| Con header da browser                      | `200`, ~500 KB di HTML |
+### 1. GitHub Actions + `deals.json` (Attivo e autonomo al 100%)
+Il repository contiene il file `deals.json` con tutti i deal estratti.
+Una **GitHub Action** (`.github/workflows/update-deals.yml`) gira automaticamente ogni 6 ore (o manualmente dalla tab *Actions* di GitHub con il pulsante *Run workflow*):
+- Esegue lo scraping con emulazione browser tramite `scripts/build-deals.mjs`.
+- Estrae e verifica i deal con `npm test`.
+- Se ci sono novità, aggiorna `deals.json` nel repository.
+- La PWA carica `deals.json` istantaneamente, senza problemi di CORS, senza dipendere da server esterni e funzionando anche totalmente offline grazie al Service Worker.
 
-Nessun proxy CORS pubblico fa da tramite (allorigins risponde `522`), quindi
-l'unica soluzione è il **proprio Worker**, che deve mandare header da browser.
-Il worker fa anche il parsing: al browser arrivano pochi KB di JSON invece di
-mezzo megabyte di HTML.
-
-## Deploy
-
+### 2. Cloudflare Worker opzionale (`worker.js`)
+Se vuoi abilitare il refresh in tempo reale direttamente dal pulsante "Aggiorna":
 ```bash
 npm install          # installa wrangler
-npm test             # 28 test sul parser
-npm run deploy       # pubblica il worker
-npm run tail         # log in tempo reale
+npm run deploy       # pubblica il worker su Cloudflare
 ```
-
-Il worker va pubblicato sullo stesso dominio già in uso dalla PWA
-(`vstdeals.ccmixmastering.workers.dev`): `wrangler deploy` sostituisce lo
-vecchio proxy generico.
-
-### Verificare che funzioni
-
-```bash
-curl -s https://vstdeals.ccmixmastering.workers.dev/health
-curl -s 'https://vstdeals.ccmixmastering.workers.dev/?free=1' | head -c 400
-```
-
-Se la risposta contiene `"blocked":"captcha"`, il worker non sta overcoming
-l'anti-bot: l'errore dice esplicitamente cosa fare.
-
-### Endpoint
-
-| Endpoint         | Descrizione                                             |
-| ---------------- | ------------------------------------------------------- |
-| `/`              | tutti i deal in JSON                                   |
-| `/?free=1`       | solo i plugin gratuiti                                  |
-| `/?refresh=1`    | salta la cache e riscrapa (30 min di TTL)               |
-| `/?limit=20`     | limita il numero di deal                                |
-| `/health`        | stato della cache                                       |
-| `/?url=<url>`    | proxy HTML grezzo, solo per host autorizzati             |
+Il worker scarica i deal con header browser e fa da fallback automatico sul REST API di WordPress. Se il worker non è ancora configurato, la PWA usa in trasparenza `deals.json` locale garantendo che l'app non mostri mai errori.
 
 ## Struttura
 

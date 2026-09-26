@@ -19,6 +19,7 @@ const SHELL_ASSETS = [
   './app.js',
   './parser.js',
   './manifest.json',
+  './deals.json',
   './icons/favicon.png',
   './icons/icon-192.png',
   './icons/icon-512.png',
@@ -97,8 +98,8 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Dati dei deal: richieste verso il worker, mai in cache come shell.
-  if (url.origin !== self.location.origin) {
+  // Dati dei deal: richieste verso il worker o verso il file locale deals.json.
+  if (url.origin !== self.location.origin || url.pathname.endsWith('/deals.json')) {
     event.respondWith(
       networkFirst(request, DATA_CACHE).catch(
         () =>
