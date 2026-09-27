@@ -2,81 +2,15 @@
   "ok": true,
   "source": "audiopluginguy.com/deals",
   "sourceUrl": "https://www.audiopluginguy.com/deals/",
-  "fetchedAt": "2026-09-26T16:05:24.721Z",
+  "fetchedAt": "2026-09-27T16:42:10.387Z",
   "stats": {
-    "rows": 369,
-    "free": 41,
-    "kept": 364,
+    "rows": 349,
+    "free": 38,
+    "kept": 344,
     "skipped": 0,
     "duplicates": 5
   },
   "deals": [
-    {
-      "id": "https://www.thenatan.store/p/dial-lofi-radio-plugin/",
-      "title": "Thenatan is offering DIAL radio signal designer plugin for free.",
-      "developer": "Thenatan",
-      "url": "https://www.thenatan.store/p/dial-lofi-radio-plugin/",
-      "discount": 100,
-      "free": true,
-      "ends": "2026-09-27",
-      "dateAdded": "2026-09-26",
-      "tags": [
-        "Effects",
-        "LoFi",
-        "Radio"
-      ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "⏰ ENDS SOON",
-          "kind": "soon"
-        },
-        {
-          "label": "🆕 NEW",
-          "kind": "new"
-        },
-        {
-          "label": "🎁 FREEBIE",
-          "kind": "freebie"
-        }
-      ]
-    },
-    {
-      "id": "https://www.audioloom.com/patgeorge/cinefelt",
-      "title": "Audioloom Free Plugin Friday – Cinefelt lo-fi effect plugin by Pat George is available as a free download.",
-      "developer": "Pat George",
-      "url": "https://www.audioloom.com/patgeorge/cinefelt",
-      "discount": 100,
-      "free": true,
-      "ends": "2026-09-27",
-      "dateAdded": "2026-09-26",
-      "tags": [
-        "Effects",
-        "LoFi",
-        "FREE"
-      ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "⏰ ENDS SOON",
-          "kind": "soon"
-        },
-        {
-          "label": "🆕 NEW",
-          "kind": "new"
-        },
-        {
-          "label": "🎁 FREEBIE",
-          "kind": "freebie"
-        }
-      ]
-    },
     {
       "id": "https://www.beatskillz.com/",
       "title": "Beatskillz is offering up to 70% off on drum machine plugins, 85% off on the Drum Machine Bundle.",
@@ -95,10 +29,6 @@
         {
           "label": "!",
           "kind": "default"
-        },
-        {
-          "label": "🆕 NEW",
-          "kind": "new"
         },
         {
           "label": "💰 BIG DISCOUNT",
@@ -129,10 +59,6 @@
           "kind": "soon"
         },
         {
-          "label": "🆕 NEW",
-          "kind": "new"
-        },
-        {
           "label": "💰 BIG DISCOUNT",
           "kind": "save"
         }
@@ -158,8 +84,8 @@
           "kind": "default"
         },
         {
-          "label": "🆕 NEW",
-          "kind": "new"
+          "label": "⏰ ENDS SOON",
+          "kind": "soon"
         },
         {
           "label": "🔥 HOT",
@@ -187,10 +113,6 @@
           "kind": "default"
         },
         {
-          "label": "🆕 NEW",
-          "kind": "new"
-        },
-        {
           "label": "🔥 HOT",
           "kind": "hot"
         }
@@ -211,16 +133,7 @@
         "Limiter",
         "Effects"
       ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "🆕 NEW",
-          "kind": "new"
-        }
-      ]
+      "badges": []
     },
     {
       "id": "https://tonelib.net/",
@@ -237,16 +150,7 @@
         "Bundle",
         "Editor"
       ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "🆕 NEW",
-          "kind": "new"
-        }
-      ]
+      "badges": []
     },
     {
       "id": "https://www.pspaudioware.com/",
@@ -262,52 +166,7 @@
         "Tools",
         "Bundle"
       ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "🆕 NEW",
-          "kind": "new"
-        }
-      ]
-    },
-    {
-      "id": "https://www.uvi.net/?ruf=111",
-      "title": "UVI Fall Sale – 50% off on on a product of choice. Use the coupon code: FALL50.",
-      "developer": "UVI",
-      "url": "https://www.uvi.net/?ruf=111",
-      "discount": 50,
-      "free": false,
-      "ends": "2026-09-27",
-      "dateAdded": "2026-09-26",
-      "tags": [
-        "Instruments",
-        "Library",
-        "Synth",
-        "Effects",
-        "UVI Workstation",
-        "Falcon"
-      ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "⏰ ENDS SOON",
-          "kind": "soon"
-        },
-        {
-          "label": "🆕 NEW",
-          "kind": "new"
-        },
-        {
-          "label": "🔥 HOT",
-          "kind": "hot"
-        }
-      ]
+      "badges": []
     },
     {
       "id": "https://www.xlnaudio.com/",
@@ -324,16 +183,7 @@
         "Expansion",
         "Bundle"
       ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "🆕 NEW",
-          "kind": "new"
-        }
-      ]
+      "badges": []
     },
     {
       "id": "https://www.zynaptiq.com/wide/",
@@ -350,16 +200,7 @@
         "Stereo",
         "Stereo Width"
       ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "🆕 NEW",
-          "kind": "new"
-        }
-      ]
+      "badges": []
     },
     {
       "id": "https://vstalarm.com/?wpam_id=14",
@@ -376,16 +217,7 @@
         "Bundle",
         "Coupon"
       ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "🆕 NEW",
-          "kind": "new"
-        }
-      ]
+      "badges": []
     },
     {
       "id": "https://audioplugin.deals/product/heater-v2-by-noiseash/ref/21/",
@@ -785,7 +617,16 @@
       "ends": "2026-09-29",
       "dateAdded": "2026-09-24",
       "tags": [],
-      "badges": []
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "⏰ ENDS SOON",
+          "kind": "soon"
+        }
+      ]
     },
     {
       "id": "https://www.194dbaudio.com/products/distance-simulator",
@@ -1404,61 +1245,6 @@
       "badges": []
     },
     {
-      "id": "https://www.pluginboutique.com/deals/24080?a_aid=57ac3d39bf8f6",
-      "title": "Get up to 70% off in the United Plugins Reverb Week Sale.",
-      "developer": "United Plugins",
-      "url": "https://www.pluginboutique.com/deals/24080?a_aid=57ac3d39bf8f6",
-      "discount": 70,
-      "free": false,
-      "ends": "2026-09-27",
-      "dateAdded": "2026-09-21",
-      "tags": [
-        "Synth",
-        "Effects",
-        "Virtual Instrument",
-        "Samples",
-        "Drum",
-        "Guitar",
-        "Bass",
-        "Vocal"
-      ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "⏰ ENDS SOON",
-          "kind": "soon"
-        }
-      ]
-    },
-    {
-      "id": "https://unitedplugins.com/#a_aid=apg",
-      "title": "United Plugins Reverb Week – 60% off on all reverb plugins, 68% off on the temporary United Reverbs Bundle.",
-      "developer": "United Plugins",
-      "url": "https://unitedplugins.com/#a_aid=apg",
-      "discount": 68,
-      "free": false,
-      "ends": "2026-09-27",
-      "dateAdded": "2026-09-21",
-      "tags": [
-        "Effects",
-        "Reverb",
-        "Bundle"
-      ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "⏰ ENDS SOON",
-          "kind": "soon"
-        }
-      ]
-    },
-    {
       "id": "https://www.pluginboutique.com/product/1-Instruments/7-Drum-Machine/17673-VRAC-?a_aid=57ac3d39bf8f6",
       "title": "Get 67% off VRAC+ by BEATSURFING. The discounted price is $49.",
       "developer": "BEATSURFING",
@@ -1866,118 +1652,6 @@
       "badges": []
     },
     {
-      "id": "https://www.pluginboutique.com/product/3-Studio-Tools/47-Gain/840-MAutoVolume?a_aid=57ac3d39bf8f6",
-      "title": "Get 50% off MAutoVolume by MeldaProduction. The discounted price is $27.",
-      "developer": "MeldaProduction",
-      "url": "https://www.pluginboutique.com/product/3-Studio-Tools/47-Gain/840-MAutoVolume?a_aid=57ac3d39bf8f6",
-      "discount": 50,
-      "free": false,
-      "ends": "2026-09-27",
-      "dateAdded": "2026-09-21",
-      "tags": [
-        "Gain",
-        "Utility",
-        "Limiter",
-        "MIDI",
-        "Modulation",
-        "Surround"
-      ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "⏰ ENDS SOON",
-          "kind": "soon"
-        }
-      ]
-    },
-    {
-      "id": "https://www.pluginboutique.com/product/2-Effects/43-Vocoder/818-MVocoder?a_aid=57ac3d39bf8f6",
-      "title": "Get 50% off MVocoder by MeldaProduction. The discounted price is $27.",
-      "developer": "MeldaProduction",
-      "url": "https://www.pluginboutique.com/product/2-Effects/43-Vocoder/818-MVocoder?a_aid=57ac3d39bf8f6",
-      "discount": 50,
-      "free": false,
-      "ends": "2026-09-27",
-      "dateAdded": "2026-09-21",
-      "tags": [
-        "Vocoder",
-        "Effects",
-        "Filter",
-        "Modulation",
-        "Surround",
-        "Stereo"
-      ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "⏰ ENDS SOON",
-          "kind": "soon"
-        }
-      ]
-    },
-    {
-      "id": "https://www.pluginboutique.com/product/2-Effects/18-Amp-Simulator/5588-MCabinet?a_aid=57ac3d39bf8f6",
-      "title": "Get 50% off MCabinet by MeldaProduction. The discounted price is $54.50.",
-      "developer": "MeldaProduction",
-      "url": "https://www.pluginboutique.com/product/2-Effects/18-Amp-Simulator/5588-MCabinet?a_aid=57ac3d39bf8f6",
-      "discount": 50,
-      "free": false,
-      "ends": "2026-09-27",
-      "dateAdded": "2026-09-21",
-      "tags": [
-        "Amp Simulator",
-        "Guitar",
-        "Bass",
-        "Sound Design",
-        "EQ",
-        "Stereo Width"
-      ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "⏰ ENDS SOON",
-          "kind": "soon"
-        }
-      ]
-    },
-    {
-      "id": "https://www.pluginboutique.com/product/2-Effects/10-Delay/83-MDelayMB?a_aid=57ac3d39bf8f6",
-      "title": "Get 50% off MDelayMB by MeldaProduction. The discounted price is $27.",
-      "developer": "MeldaProduction",
-      "url": "https://www.pluginboutique.com/product/2-Effects/10-Delay/83-MDelayMB?a_aid=57ac3d39bf8f6",
-      "discount": 50,
-      "free": false,
-      "ends": "2026-09-27",
-      "dateAdded": "2026-09-21",
-      "tags": [
-        "Delay",
-        "Multiband",
-        "Modulation",
-        "LFO",
-        "ADSR",
-        "Surround"
-      ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "⏰ ENDS SOON",
-          "kind": "soon"
-        }
-      ]
-    },
-    {
       "id": "https://www.pluginboutique.com/product/1-Instruments/4-Synth/12023-M-Tron-Pro-IV?a_aid=57ac3d39bf8f6",
       "title": "Get 50% off M-Tron Pro IV by GForce Software. The discounted price is $74.99.",
       "developer": "GForce Software",
@@ -2068,33 +1742,6 @@
         "MPE"
       ],
       "badges": []
-    },
-    {
-      "id": "https://www.pluginboutique.com/product/2-Effects/16-EQ/14488-BALANCE?a_aid=57ac3d39bf8f6",
-      "title": "Get 33% off BALANCE by Zynaptiq. The discounted price is $99.",
-      "developer": "Zynaptiq",
-      "url": "https://www.pluginboutique.com/product/2-Effects/16-EQ/14488-BALANCE?a_aid=57ac3d39bf8f6",
-      "discount": 33,
-      "free": false,
-      "ends": "2026-09-27",
-      "dateAdded": "2026-09-21",
-      "tags": [
-        "EQ",
-        "Analyzer",
-        "Filter",
-        "Mixing",
-        "Sound Design"
-      ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "⏰ ENDS SOON",
-          "kind": "soon"
-        }
-      ]
     },
     {
       "id": "https://www.pluginboutique.com/product/81-Bundles/39-Effects-Bundles/16626-SSL-autoSeries-Bundle?a_aid=57ac3d39bf8f6",
@@ -2649,7 +2296,16 @@
       "ends": "2026-09-29",
       "dateAdded": "2026-09-17",
       "tags": [],
-      "badges": []
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "⏰ ENDS SOON",
+          "kind": "soon"
+        }
+      ]
     },
     {
       "id": "https://www.pluginboutique.com/product/81-Bundles/97-Various-Category/16133-UAD-Complete-4?a_aid=57ac3d39bf8f6",
@@ -2964,6 +2620,10 @@
           "kind": "default"
         },
         {
+          "label": "👍 RECOMMENDED",
+          "kind": "rec"
+        },
+        {
           "label": "🔥 HOT",
           "kind": "hot"
         }
@@ -3067,6 +2727,10 @@
           "kind": "default"
         },
         {
+          "label": "👍 RECOMMENDED",
+          "kind": "rec"
+        },
+        {
           "label": "🔥 HOT",
           "kind": "hot"
         }
@@ -3123,65 +2787,6 @@
         {
           "label": "🔥 HOT",
           "kind": "hot"
-        }
-      ]
-    },
-    {
-      "id": "https://www.pluginboutique.com/deals/24059?a_aid=57ac3d39bf8f6",
-      "title": "Get up to 65% off in the EastWest Sounds Back to the Studio Sale.",
-      "developer": "EastWest",
-      "url": "https://www.pluginboutique.com/deals/24059?a_aid=57ac3d39bf8f6",
-      "discount": 65,
-      "free": false,
-      "ends": "2026-09-27",
-      "dateAdded": "2026-09-16",
-      "tags": [
-        "Synth",
-        "Effects",
-        "Virtual Instrument",
-        "Instruments",
-        "Samples",
-        "Loops",
-        "Synth Presets",
-        "Sample and Preset Packs"
-      ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "⏰ ENDS SOON",
-          "kind": "soon"
-        }
-      ]
-    },
-    {
-      "id": "https://www.pluginboutique.com/deals/23932?a_aid=57ac3d39bf8f6",
-      "title": "Get up to 62% off in the Excite Audio Bloom Series Synth Month Sale.",
-      "developer": "Excite Audio",
-      "url": "https://www.pluginboutique.com/deals/23932?a_aid=57ac3d39bf8f6",
-      "discount": 62,
-      "free": false,
-      "ends": "2026-09-27",
-      "dateAdded": "2026-09-16",
-      "tags": [
-        "Synth",
-        "Effects",
-        "Samples",
-        "Instruments",
-        "DAW",
-        "Mixing",
-        "Mastering"
-      ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "⏰ ENDS SOON",
-          "kind": "soon"
         }
       ]
     },
@@ -3324,6 +2929,10 @@
         {
           "label": "!",
           "kind": "default"
+        },
+        {
+          "label": "👍 RECOMMENDED",
+          "kind": "rec"
         },
         {
           "label": "🔥 HOT",
@@ -3598,7 +3207,16 @@
         "Pitch",
         "BlackFriday"
       ],
-      "badges": []
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "⏰ ENDS SOON",
+          "kind": "soon"
+        }
+      ]
     },
     {
       "id": "https://www.pluginboutique.com/deals/24015?a_aid=57ac3d39bf8f6",
@@ -3922,62 +3540,6 @@
       ]
     },
     {
-      "id": "https://audioplugin.deals/product/eastwest-hollywood-orchestra-opus-edition/ref/21/",
-      "title": "Get 75% off EastWest Hollywood Orchestra Opus Edition for $149 (Normally $599).",
-      "developer": "EastWest",
-      "url": "https://audioplugin.deals/product/eastwest-hollywood-orchestra-opus-edition/ref/21/",
-      "discount": 75,
-      "free": false,
-      "ends": "2026-09-27",
-      "dateAdded": "2026-09-14",
-      "tags": [
-        "Instruments",
-        "Orchestral"
-      ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "⏰ ENDS SOON",
-          "kind": "soon"
-        },
-        {
-          "label": "🔥 HOT",
-          "kind": "hot"
-        }
-      ]
-    },
-    {
-      "id": "https://www.pluginboutique.com/deals/24047?a_aid=57ac3d39bf8f6",
-      "title": "Get up to 74% off in the Excite Audio Evolve Synth Month Sale.",
-      "developer": "Excite Audio",
-      "url": "https://www.pluginboutique.com/deals/24047?a_aid=57ac3d39bf8f6",
-      "discount": 74,
-      "free": false,
-      "ends": "2026-09-27",
-      "dateAdded": "2026-09-14",
-      "tags": [
-        "Samples",
-        "Synth",
-        "Effects",
-        "Virtual Instrument",
-        "Synth Presets",
-        "Bundle"
-      ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "⏰ ENDS SOON",
-          "kind": "soon"
-        }
-      ]
-    },
-    {
       "id": "https://www.pluginboutique.com/product/3-Studio-Tools/72-Utility/16966-Meaw-Assist-AI-Assistant?a_aid=57ac3d39bf8f6",
       "title": "Get 60% off Meaw: Assist – AI Assistant by Safari Audio. The discounted price is $39.99.",
       "developer": "Safari Audio",
@@ -3993,38 +3555,6 @@
         "Utility"
       ],
       "badges": []
-    },
-    {
-      "id": "https://www.pluginboutique.com/product/1-Instruments/4-Synth/10497-BA-1?a_aid=57ac3d39bf8f6",
-      "title": "Get 60% off BA-1 by Baby Audio. The discounted price is $39.",
-      "developer": "Baby Audio",
-      "url": "https://www.pluginboutique.com/product/1-Instruments/4-Synth/10497-BA-1?a_aid=57ac3d39bf8f6",
-      "discount": 60,
-      "free": false,
-      "ends": "2026-09-27",
-      "dateAdded": "2026-09-14",
-      "tags": [
-        "Synth",
-        "Analog",
-        "Arpeggiator",
-        "Chorus",
-        "Delay",
-        "Reverb"
-      ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "⏰ ENDS SOON",
-          "kind": "soon"
-        },
-        {
-          "label": "🔥 HOT",
-          "kind": "hot"
-        }
-      ]
     },
     {
       "id": "https://www.pluginboutique.com/product/1-Instruments/7-Drum-Machine/11945-Triaz?a_aid=57ac3d39bf8f6",
@@ -4066,31 +3596,6 @@
         {
           "label": "!",
           "kind": "default"
-        },
-        {
-          "label": "🔥 HOT",
-          "kind": "hot"
-        }
-      ]
-    },
-    {
-      "id": "https://audiodeluxe.com/collections/software/products/eastwest-string-machine?sca_ref=8652346.POlMzknLq02of5K&sca_source=APG",
-      "title": "Get 47% off EastWest String Machine at Audio Deluxe. The discounted price is $52.",
-      "developer": "UVI",
-      "url": "https://audiodeluxe.com/collections/software/products/eastwest-string-machine?sca_ref=8652346.POlMzknLq02of5K&sca_source=APG",
-      "discount": 47,
-      "free": false,
-      "ends": "2026-09-27",
-      "dateAdded": "2026-09-14",
-      "tags": [],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "⏰ ENDS SOON",
-          "kind": "soon"
         },
         {
           "label": "🔥 HOT",
@@ -4209,31 +3714,6 @@
         "Bundle"
       ],
       "badges": []
-    },
-    {
-      "id": "https://audioplugin.deals/product/eastwest-hollywood-orchestra-opus-hollywood-fantasy-orchestra-bundle/ref/21/",
-      "title": "Get 79% off EastWest Hollywood Orchestra Opus + Hollywood Fantasy Orchestra Bundle for $249 (Normally $1198).",
-      "developer": "1198",
-      "url": "https://audioplugin.deals/product/eastwest-hollywood-orchestra-opus-hollywood-fantasy-orchestra-bundle/ref/21/",
-      "discount": null,
-      "free": false,
-      "ends": "2026-09-27",
-      "dateAdded": "2026-09-14",
-      "tags": [],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "⏰ ENDS SOON",
-          "kind": "soon"
-        },
-        {
-          "label": "💰 BIG DISCOUNT",
-          "kind": "save"
-        }
-      ]
     },
     {
       "id": "https://polarity.productions/polarity-recorder/",
@@ -4379,34 +3859,6 @@
         {
           "label": "🎁 FREEBIE",
           "kind": "freebie"
-        }
-      ]
-    },
-    {
-      "id": "https://www.pluginboutique.com/product/2-Effects/96-Tape-Emulation/17783-driveDAT?a_aid=57ac3d39bf8f6",
-      "title": "Get 61% off driveDAT by The Tone Foundry. The discounted price is $19.",
-      "developer": "The Tone Foundry",
-      "url": "https://www.pluginboutique.com/product/2-Effects/96-Tape-Emulation/17783-driveDAT?a_aid=57ac3d39bf8f6",
-      "discount": 61,
-      "free": false,
-      "ends": "2026-09-27",
-      "dateAdded": "2026-09-11",
-      "tags": [
-        "Tape Emulation",
-        "Saturation",
-        "Distortion",
-        "Noise",
-        "LoFi",
-        "Bit Crusher"
-      ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "⏰ ENDS SOON",
-          "kind": "soon"
         }
       ]
     },
@@ -4688,7 +4140,16 @@
         "Library",
         "Kontakt"
       ],
-      "badges": []
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "⏰ ENDS SOON",
+          "kind": "soon"
+        }
+      ]
     },
     {
       "id": "https://www.soniccouture.com/en/products/34-new/g47-the-attic-3/",
@@ -5623,10 +5084,6 @@
         {
           "label": "⏰ ENDS SOON",
           "kind": "soon"
-        },
-        {
-          "label": "🆕 NEW",
-          "kind": "new"
         },
         {
           "label": "💰 BIG DISCOUNT",
@@ -6688,7 +6145,16 @@
       "ends": "2026-09-29",
       "dateAdded": "2026-09-01",
       "tags": [],
-      "badges": []
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "⏰ ENDS SOON",
+          "kind": "soon"
+        }
+      ]
     },
     {
       "id": "https://www.pluginboutique.com/product/81-Bundles/97-Various-Category/16911-Attracktive-Box-Pro?a_aid=57ac3d39bf8f6",
@@ -7660,6 +7126,10 @@
           "kind": "default"
         },
         {
+          "label": "⏰ ENDS SOON",
+          "kind": "soon"
+        },
+        {
           "label": "💰 BIG DISCOUNT",
           "kind": "save"
         }
@@ -7832,31 +7302,6 @@
       ]
     },
     {
-      "id": "https://shamrockaudio.com/plugins/fitzphone",
-      "title": "FITZ PHONE, the telephone/megaphone/AM-radio character plugin from ShamROCK Audio, is free — a permanent freebie, no coupon needed.",
-      "developer": "ShamROCK Audio",
-      "url": "https://shamrockaudio.com/plugins/fitzphone",
-      "discount": 100,
-      "free": true,
-      "ends": null,
-      "dateAdded": "2026-08-28",
-      "tags": [
-        "Effects",
-        "Freebie",
-        "FREE"
-      ],
-      "badges": [
-        {
-          "label": "!",
-          "kind": "default"
-        },
-        {
-          "label": "🎁 FREEBIE",
-          "kind": "freebie"
-        }
-      ]
-    },
-    {
       "id": "https://www.pluginboutique.com/deals/23934?a_aid=57ac3d39bf8f6",
       "title": "Get up to 43% off in the AudioThing Orbita Intro Sale.",
       "developer": "AudioThing",
@@ -7917,24 +7362,6 @@
         "SampleTank",
         "Strings",
         "Orchestral"
-      ],
-      "badges": []
-    },
-    {
-      "id": "https://www.pluginboutique.com/product/1-Instruments/57-Complete-Collection/17752–Pre-order-Sinphonica-Maestosa-Strings-Complete-Collection-?a_aid=57ac3d39bf8f6",
-      "title": "Get 20% off [Pre-order] Sinphonica Maestosa Strings (Complete Collection) by IK Multimedia. The discounted price is $399.99.",
-      "developer": "IK Multimedia",
-      "url": "https://www.pluginboutique.com/product/1-Instruments/57-Complete-Collection/17752–Pre-order-Sinphonica-Maestosa-Strings-Complete-Collection-?a_aid=57ac3d39bf8f6",
-      "discount": 20,
-      "free": false,
-      "ends": "2026-10-04",
-      "dateAdded": "2026-08-28",
-      "tags": [
-        "Orchestral",
-        "Strings",
-        "Cinematic",
-        "Mixing",
-        "Library"
       ],
       "badges": []
     }
