@@ -42,6 +42,22 @@ for (const icon of icons) {
 check('manifest dichiara una icona maskable', (manifest.icons || []).some((i) => (i.purpose || '').includes('maskable')));
 check('manifest ha start_url e scope', Boolean(manifest.start_url && manifest.scope));
 
+/* --- identità dell'app ---
+ * Un id "nudo" come "/" risolve sulla root dell'origine: su origin condivisi
+ * (es. *.github.io) crea un'identità ambigua e, se il browser ha un vecchio
+ * record di installazione, l'utente vede "app già installata" anche dopo la
+ * disinstallazione. L'id deve essere esplicito, same-origin e mai la root nuda. */
+check('manifest dichiara un id', typeof manifest.id === 'string' && manifest.id.length > 0);
+const manifestBase = 'https://example.test/vstdeals/manifest.json';
+const idUrl = new URL(manifest.id, manifestBase);
+const startUrlUrl = new URL(manifest.start_url, manifestBase);
+check('manifest id same-origin con start_url', idUrl.origin === startUrlUrl.origin, idUrl.origin);
+check(
+  'manifest id non è la root nuda dell\'origine',
+  !(idUrl.pathname === '/' && idUrl.search === ''),
+  manifest.id
+);
+
 /* --- risorse citate in index.html --- */
 const html = read('index.html');
 const refs = [...html.matchAll(/(?:href|src)="([^"#:]+)"/g)].map((m) => m[1]);
