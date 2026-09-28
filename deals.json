@@ -2,15 +2,359 @@
   "ok": true,
   "source": "audiopluginguy.com/deals",
   "sourceUrl": "https://www.audiopluginguy.com/deals/",
-  "fetchedAt": "2026-09-27T16:42:10.387Z",
+  "fetchedAt": "2026-09-28T04:37:40.270Z",
   "stats": {
-    "rows": 349,
-    "free": 38,
-    "kept": 344,
+    "rows": 363,
+    "free": 40,
+    "kept": 357,
     "skipped": 0,
-    "duplicates": 5
+    "duplicates": 6
   },
   "deals": [
+    {
+      "id": "https://soundpaint.com/pages/free-engine",
+      "title": "8Dio has released Soundpaint Engine 5.0, a free sampler plugin and standalone for Win & Mac.",
+      "developer": "8Dio",
+      "url": "https://soundpaint.com/pages/free-engine",
+      "discount": 100,
+      "free": true,
+      "ends": null,
+      "dateAdded": "2026-09-27",
+      "tags": [
+        "Freebie",
+        "Sampler",
+        "Player",
+        "Soundpaint"
+      ],
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "🆕 NEW",
+          "kind": "new"
+        },
+        {
+          "label": "🎁 FREEBIE",
+          "kind": "freebie"
+        },
+        {
+          "label": "🔥 HOT",
+          "kind": "hot"
+        }
+      ]
+    },
+    {
+      "id": "https://ybkaudio.com/#/player",
+      "title": "YBK Audio has released Instrument Player, a standalone VST3 player for Windows. Instrument Player is available as a free download.",
+      "developer": "YBK AUDIO",
+      "url": "https://ybkaudio.com/#/player",
+      "discount": 100,
+      "free": true,
+      "ends": "2026-10-19",
+      "dateAdded": "2026-09-27",
+      "tags": [
+        "Player",
+        "Host",
+        "FREE"
+      ],
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "🆕 NEW",
+          "kind": "new"
+        },
+        {
+          "label": "🎁 FREEBIE",
+          "kind": "freebie"
+        }
+      ]
+    },
+    {
+      "id": "https://plugindeals.net/ni/deals",
+      "title": "Native Instruments Creative Studio Sale – up to 73% off on 500+ products from NI partners.",
+      "developer": "Native Instruments",
+      "url": "https://plugindeals.net/ni/deals",
+      "discount": 73,
+      "free": false,
+      "ends": "2026-10-19",
+      "dateAdded": "2026-09-27",
+      "tags": [
+        "Instruments",
+        "Library",
+        "Kontakt Player",
+        "Effects",
+        "Expansion",
+        "Bundle"
+      ],
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "🆕 NEW",
+          "kind": "new"
+        },
+        {
+          "label": "🔥 HOT",
+          "kind": "hot"
+        }
+      ]
+    },
+    {
+      "id": "https://yurtrock.com/products/plug-in-bundle-decade-dr-fill-and-pick-pocket",
+      "title": "Yurt Rock is offering 66% off on the Plugin Bundle, including all their 3 plugins.",
+      "developer": "Yurt Rock",
+      "url": "https://yurtrock.com/products/plug-in-bundle-decade-dr-fill-and-pick-pocket",
+      "discount": 66,
+      "free": false,
+      "ends": "2026-09-30",
+      "dateAdded": "2026-09-27",
+      "tags": [
+        "Instruments",
+        "Effects",
+        "Bundle"
+      ],
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "🆕 NEW",
+          "kind": "new"
+        }
+      ]
+    },
+    {
+      "id": "https://auddict.com/products/memory-oboe",
+      "title": "Auddict has released Memory Oboe library for Kontakt (full version). The intro is 60% off.",
+      "developer": "Auddict",
+      "url": "https://auddict.com/products/memory-oboe",
+      "discount": 60,
+      "free": false,
+      "ends": null,
+      "dateAdded": "2026-09-27",
+      "tags": [
+        "Instruments",
+        "Library",
+        "Kontakt"
+      ],
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "🆕 NEW",
+          "kind": "new"
+        }
+      ]
+    },
+    {
+      "id": "https://bunkersamples.com/whisper-swells/",
+      "title": "Bunker Samples has released Whisper Swells library for the free Audiomodern Soundbox sampler. The intro is 51% off.",
+      "developer": "Bunker Samples",
+      "url": "https://bunkersamples.com/whisper-swells/",
+      "discount": 51,
+      "free": false,
+      "ends": "2026-10-13",
+      "dateAdded": "2026-09-27",
+      "tags": [
+        "Instruments",
+        "Library"
+      ],
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "🆕 NEW",
+          "kind": "new"
+        }
+      ]
+    },
+    {
+      "id": "https://www.ssa-plugins.com/plugins/axbundle/",
+      "title": "SSA Plugins is offering 50% off on aXBundle.",
+      "developer": "SSA Plugins",
+      "url": "https://www.ssa-plugins.com/plugins/axbundle/",
+      "discount": 50,
+      "free": false,
+      "ends": "2026-09-30",
+      "dateAdded": "2026-09-27",
+      "tags": [
+        "Effects",
+        "Tools",
+        "Bundle"
+      ],
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "🆕 NEW",
+          "kind": "new"
+        }
+      ]
+    },
+    {
+      "id": "https://www.amplesound.net/en/index.asp",
+      "title": "Ample Sound Ample China Sale – 44% off on Ample China bundle (10 instrument plugins), 25% off on single products.",
+      "developer": "Ample Sound",
+      "url": "https://www.amplesound.net/en/index.asp",
+      "discount": 44,
+      "free": false,
+      "ends": "2026-10-25",
+      "dateAdded": "2026-09-27",
+      "tags": [
+        "Instruments",
+        "Bundle"
+      ],
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "🆕 NEW",
+          "kind": "new"
+        }
+      ]
+    },
+    {
+      "id": "https://www.snorkelaudio.com/little-arp-monster/",
+      "title": "Snorkel Audio Little Arp Monster is 40% off.",
+      "developer": "Snorkel Audio",
+      "url": "https://www.snorkelaudio.com/little-arp-monster/",
+      "discount": 40,
+      "free": false,
+      "ends": "2026-10-04",
+      "dateAdded": "2026-09-27",
+      "tags": [
+        "Effects",
+        "Instruments",
+        "Arpeggiator"
+      ],
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "🆕 NEW",
+          "kind": "new"
+        }
+      ]
+    },
+    {
+      "id": "https://oceanswift.net/product/devocean/",
+      "title": "Ocean Swift has updated DevOcean Modular synthesis and sound design plugin and standalone for Mac & Win to v1.2. The intro is 35% off.",
+      "developer": "Ocean Swift",
+      "url": "https://oceanswift.net/product/devocean/",
+      "discount": 35,
+      "free": false,
+      "ends": null,
+      "dateAdded": "2026-09-27",
+      "tags": [
+        "Instruments",
+        "Synth",
+        "Sound Design",
+        "Modular"
+      ],
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "🆕 NEW",
+          "kind": "new"
+        }
+      ]
+    },
+    {
+      "id": "https://nova.lunacy.audio/",
+      "title": "Lunacy Audio has launched Nova, a new instrument platform with the free Nova host plugin for Win & Mac. The intro for the Launch bundle and paid plugins is up to 33% off.",
+      "developer": "Lunacy Audio",
+      "url": "https://nova.lunacy.audio/",
+      "discount": 33,
+      "free": false,
+      "ends": null,
+      "dateAdded": "2026-09-27",
+      "tags": [
+        "Instruments",
+        "Library",
+        "Bundle"
+      ],
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "🆕 NEW",
+          "kind": "new"
+        }
+      ]
+    },
+    {
+      "id": "https://soundpaint.com/products/looper",
+      "title": "8Dio has released the new Looper, a vintage recording studio hosted inside the free Soundpaint sampler for Win & Mac. The Looper is 30% off.",
+      "developer": "8Dio",
+      "url": "https://soundpaint.com/products/looper",
+      "discount": 30,
+      "free": false,
+      "ends": "2026-10-01",
+      "dateAdded": "2026-09-27",
+      "tags": [
+        "Utility",
+        "Looper",
+        "Recording"
+      ],
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "🆕 NEW",
+          "kind": "new"
+        }
+      ]
+    },
+    {
+      "id": "https://mg-music.net/mg-ukuleles/",
+      "title": "MG Music has released MG Ukuleles library for Kontakt Player. The intro is 26% off.",
+      "developer": "MG Music",
+      "url": "https://mg-music.net/mg-ukuleles/",
+      "discount": 26,
+      "free": false,
+      "ends": null,
+      "dateAdded": "2026-09-27",
+      "tags": [
+        "Instruments",
+        "Library",
+        "Kontakt Player"
+      ],
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "🆕 NEW",
+          "kind": "new"
+        }
+      ]
+    },
     {
       "id": "https://www.beatskillz.com/",
       "title": "Beatskillz is offering up to 70% off on drum machine plugins, 85% off on the Drum Machine Bundle.",
@@ -7302,6 +7646,47 @@
       ]
     },
     {
+      "id": "https://plugindeals.net/ik/promos",
+      "title": "IK Multimedia is offering 85% off on AmpliTube 5.",
+      "developer": "IK Multimedia",
+      "url": "https://plugindeals.net/ik/promos",
+      "discount": 85,
+      "free": false,
+      "ends": "2026-10-04",
+      "dateAdded": "2026-08-28",
+      "tags": [
+        "Effects",
+        "Amp",
+        "Sims",
+        "Cabs",
+        "Bundle",
+        "AmpliTube",
+        "Amp Sim",
+        "Instruments",
+        "SampleTank",
+        "Strings",
+        "Orchestral"
+      ],
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "🆕 NEW",
+          "kind": "new"
+        },
+        {
+          "label": "🔥 HOT",
+          "kind": "hot"
+        },
+        {
+          "label": "💰 BIG DISCOUNT",
+          "kind": "save"
+        }
+      ]
+    },
+    {
       "id": "https://www.pluginboutique.com/deals/23934?a_aid=57ac3d39bf8f6",
       "title": "Get up to 43% off in the AudioThing Orbita Intro Sale.",
       "developer": "AudioThing",
@@ -7346,23 +7731,6 @@
       "ends": "2026-09-30",
       "dateAdded": "2026-08-28",
       "tags": [],
-      "badges": []
-    },
-    {
-      "id": "https://plugindeals.net/ik/promos",
-      "title": "IK Multimedia has announced Sinphonica Maestosa Strings virtual instrument plugin for Win & Mac. It is available for pre-order at 20% off.",
-      "developer": "IK Multimedia",
-      "url": "https://plugindeals.net/ik/promos",
-      "discount": 20,
-      "free": false,
-      "ends": "2026-10-04",
-      "dateAdded": "2026-08-28",
-      "tags": [
-        "Instruments",
-        "SampleTank",
-        "Strings",
-        "Orchestral"
-      ],
       "badges": []
     }
   ]
