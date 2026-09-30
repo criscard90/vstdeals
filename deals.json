@@ -2,15 +2,97 @@
   "ok": true,
   "source": "audiopluginguy.com/deals",
   "sourceUrl": "https://www.audiopluginguy.com/deals/",
-  "fetchedAt": "2026-09-30T12:12:36.677Z",
+  "fetchedAt": "2026-09-30T22:02:23.048Z",
   "stats": {
-    "rows": 223,
-    "free": 41,
-    "kept": 219,
+    "rows": 230,
+    "free": 43,
+    "kept": 226,
     "skipped": 0,
     "duplicates": 4
   },
   "deals": [
+    {
+      "id": "https://formbreaker.com/rnd-radio/",
+      "title": "Holistic DSP has launched FORMBREAKER RND RADIO, a web-based groove generator powered by the forthcoming FORMBREAKER plugin. Create and download random loops.",
+      "developer": "Holistic DSP",
+      "url": "https://formbreaker.com/rnd-radio/",
+      "discount": 100,
+      "free": true,
+      "ends": null,
+      "dateAdded": "2026-09-30",
+      "tags": [
+        "Randomizer",
+        "Generator"
+      ],
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "🆕 NEW",
+          "kind": "new"
+        },
+        {
+          "label": "🎁 FREEBIE",
+          "kind": "freebie"
+        }
+      ]
+    },
+    {
+      "id": "https://madhouseaudio.com/plugins/acid-o/",
+      "title": "ACID-O by Mad House Audio is a free TB-303-style acid bass synth.",
+      "developer": "Mad House Audio",
+      "url": "https://madhouseaudio.com/plugins/acid-o/",
+      "discount": 100,
+      "free": true,
+      "ends": null,
+      "dateAdded": "2026-09-30",
+      "tags": [
+        "Step Sequencer",
+        "Synth",
+        "Arp"
+      ],
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "🆕 NEW",
+          "kind": "new"
+        },
+        {
+          "label": "🎁 FREEBIE",
+          "kind": "freebie"
+        }
+      ]
+    },
+    {
+      "id": "https://audioplugin.deals/product/the-complete-producer-skills-bundle-by-beat-magazine/ref/21/",
+      "title": "Get 89% off The Complete Producer Skills Bundle by Beat Magazine for $9.99 (Normally $92.75).",
+      "developer": "Beat Magazine",
+      "url": "https://audioplugin.deals/product/the-complete-producer-skills-bundle-by-beat-magazine/ref/21/",
+      "discount": 89,
+      "free": false,
+      "ends": "2026-10-13",
+      "dateAdded": "2026-09-30",
+      "tags": [],
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "🆕 NEW",
+          "kind": "new"
+        },
+        {
+          "label": "💰 BIG DISCOUNT",
+          "kind": "save"
+        }
+      ]
+    },
     {
       "id": "https://audioplugin.deals/product/eastwest-hollywood-orchestra-opus-hollywood-fantasy-orchestra-bundle/ref/21/",
       "title": "Get 79% off EastWest Hollywood Orchestra Opus + Hollywood Fantasy Orchestra Bundle for $249 (Normally $1198) Runs in the EastWest Opus engine.",
@@ -29,6 +111,48 @@
         {
           "label": "⏰ ENDS SOON",
           "kind": "soon"
+        },
+        {
+          "label": "🆕 NEW",
+          "kind": "new"
+        }
+      ]
+    },
+    {
+      "id": "https://audiodeluxe.com/collections/software/products/eastwest-lo-fi?sca_ref=8652346.POlMzknLq02of5K&sca_source=APG",
+      "title": "Get 67% off EastWest LO-FI at Audio Deluxe. The discounted price is $49.",
+      "developer": "",
+      "url": "https://audiodeluxe.com/collections/software/products/eastwest-lo-fi?sca_ref=8652346.POlMzknLq02of5K&sca_source=APG",
+      "discount": 67,
+      "free": false,
+      "ends": "2026-11-01",
+      "dateAdded": "2026-09-30",
+      "tags": [],
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "🆕 NEW",
+          "kind": "new"
+        }
+      ]
+    },
+    {
+      "id": "https://app.shevtoneaudio.com/orchestrator",
+      "title": "Get 50% off ShevtoneAudio Orchestrator, a MIDI orchestration plugin, with code orch50.",
+      "developer": "ShevToneAudio",
+      "url": "https://app.shevtoneaudio.com/orchestrator",
+      "discount": 50,
+      "free": false,
+      "ends": null,
+      "dateAdded": "2026-09-30",
+      "tags": [],
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
         },
         {
           "label": "🆕 NEW",
@@ -77,6 +201,63 @@
         "Dynamics",
         "Mix & Master",
         "Sound Design"
+      ],
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "🆕 NEW",
+          "kind": "new"
+        }
+      ]
+    },
+    {
+      "id": "https://audiodeluxe.com/collections/software/products/eastwest-string-machine?sca_ref=8652346.POlMzknLq02of5K&sca_source=APG",
+      "title": "Get 47% off EastWest String Machine at Audio Deluxe. The discounted price is $52.",
+      "developer": "",
+      "url": "https://audiodeluxe.com/collections/software/products/eastwest-string-machine?sca_ref=8652346.POlMzknLq02of5K&sca_source=APG",
+      "discount": 47,
+      "free": false,
+      "ends": "2026-11-01",
+      "dateAdded": "2026-09-30",
+      "tags": [],
+      "badges": [
+        {
+          "label": "!",
+          "kind": "default"
+        },
+        {
+          "label": "🆕 NEW",
+          "kind": "new"
+        }
+      ]
+    },
+    {
+      "id": "https://parishaudio.com/products/vocal-pro",
+      "title": "Get 40% off Vocal Pro 2.0 by Parish Audio.",
+      "developer": "Parish Audio",
+      "url": "https://parishaudio.com/products/vocal-pro",
+      "discount": 40,
+      "free": false,
+      "ends": "2026-10-13",
+      "dateAdded": "2026-09-30",
+      "tags": [
+        "Effects",
+        "Vocal",
+        "Vocal Processing",
+        "Compressor",
+        "Reverb",
+        "Multi",
+        "Multi-Effect",
+        "Saturation",
+        "Widener",
+        "Width",
+        "Stereo Width",
+        "EQ",
+        "Channel Strip",
+        "Strip"
       ],
       "badges": [
         {
